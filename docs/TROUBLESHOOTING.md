@@ -11,6 +11,21 @@ Both come from GitHub. If github.com or raw.githubusercontent.com is slow or blo
 ## The bar is empty or icons are boxes
 Install the font and sign out/in: `winget install DEVCOM.JetBrainsMonoNerdFont`. Any Nerd Font works if you change the `font-family` line in `templates/yasb.styles.css.tmpl`, then run `cw theme`.
 
+## "komorebic", "whkd" or "yasbc" is not recognised / not found
+It means Windows has not handed the new PATH to the window or program that is asking. `cw` and the login script now re-read PATH themselves, and the installer adds a tool's folder to your PATH if winget forgot to. If a hotkey still says "not found": sign out and in once, then run `cw doctor`. To fix it by hand: `winget install LGUG2Z.komorebi LGUG2Z.whkd AmN.yasb`.
+
+## Alt+Enter does nothing
+Alt+Enter opens Windows Terminal, or PowerShell when Windows Terminal is not installed. Install it with `winget install Microsoft.WindowsTerminal`, or change the command on the **Shortcuts** page of the settings window (`Alt` `S`).
+
+## The README badges say "repo or workflow not found" / "no releases"
+GitHub badges only work for a **public** repository that has already run its workflow. Push the project, open the **Actions** tab once so `CI` runs, and the CI badge turns green. The version badge is fixed text and never goes red. A release (for the Releases page) is made by pushing a tag: `git tag v1.2.0` then `git push origin v1.2.0`.
+
+## The settings window does not open
+Run `cw settings` in a terminal to see the error, and `cw doctor` to check the files exist. Re-run `Install.ps1` if `settings.ps1` is missing.
+
+## Animated wallpapers
+See [ANIMATED.md](ANIMATED.md#troubleshooting).
+
 ## `cw` is not recognised
 Open a **new** terminal. The installer adds `~\.config\caelestia-win\bin` to your user PATH, which only applies to new windows.
 
@@ -33,7 +48,7 @@ The bar's `taskbar` widget lists them. Some windows are filtered by `strict_filt
 If you picked a preset with `cw preset <name>`, colours stay on that preset. Run `cw preset auto` to follow the wallpaper again. If Pillow is missing: `python -m pip install --user pillow`.
 
 ## winget could not install a package
-The installer continues and prints the manual command. All IDs: `LGUG2Z.komorebi`, `LGUG2Z.whkd`, `AmN.yasb`, `Flow-Launcher.Flow-Launcher`, `DEVCOM.JetBrainsMonoNerdFont`, `Python.Python.3.12`. Search with `winget search <name>` if one has been renamed.
+The installer continues and prints the manual command. All IDs: `LGUG2Z.komorebi`, `LGUG2Z.whkd`, `AmN.yasb`, `Flow-Launcher.Flow-Launcher`, `DEVCOM.JetBrainsMonoNerdFont`, `Python.Python.3.12`, and for animated wallpapers `rocksdanister.LivelyWallpaper` and `Gyan.FFmpeg`. Search with `winget search <name>` if one has been renamed.
 
 ## Script execution is disabled
 You never have to change the global policy. Always run scripts as `powershell -NoProfile -ExecutionPolicy Bypass -File <script>`. The installer, `cw.cmd` and the autostart entry already do.

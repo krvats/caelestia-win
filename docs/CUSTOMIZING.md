@@ -1,5 +1,7 @@
 # Customizing
 
+The quickest way is the settings window: press `Alt` `S`. This page is for doing the same by hand. Animated wallpapers are covered in [ANIMATED.md](ANIMATED.md).
+
 ## Colours
 
 ```powershell

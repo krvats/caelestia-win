@@ -282,6 +282,57 @@ class SchemeTests(unittest.TestCase):
             self.assertIn(name, readme, name)
 
 
+class SettingsAndLiveTests(unittest.TestCase):
+    def test_settings_window_is_wired_everywhere(self):
+        self.assertIn("settings.ps1", (ROOT / "Install.ps1").read_text(encoding="utf-8"))
+        self.assertIn("'settings'", (ROOT / "scripts/cw.ps1").read_text(encoding="utf-8"))
+        self.assertIn("alt + s :", (ROOT / "config/whkd/whkdrc").read_text(encoding="utf-8"))
+
+    def test_settings_knows_every_preset_and_scheme(self):
+        text = (ROOT / "scripts/settings.ps1").read_text(encoding="utf-8")
+        for name in list(theme.PRESETS) + list(theme.SCHEMES):
+            self.assertIn(f"'{name}'", text, name)
+
+    def test_live_commands_documented(self):
+        cw = (ROOT / "scripts/cw.ps1").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("'live'", cw)
+        for word in ("cw live next", "cw live rules", "-WithAnimated", "cw settings"):
+            self.assertIn(word, readme, word)
+        self.assertIn("live next", (ROOT / "config/whkd/whkdrc").read_text(encoding="utf-8"))
+
+    def test_installer_copies_every_script_it_needs(self):
+        text = (ROOT / "Install.ps1").read_text(encoding="utf-8")
+        for name in ("cw.ps1", "settings.ps1", "settings-lib.ps1", "live-guard.ps1", "start.ps1", "theme.py"):
+            self.assertIn(f"'{name}'", text, name)
+
+    def test_maintainer_files_are_not_uploaded(self):
+        self.assertIn("maintainer/", (ROOT / ".gitignore").read_text(encoding="utf-8"))
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for name in ("Publish.ps1", "BEFORE-UPLOAD", "GITHUB-SETUP", "set_repo"):
+            self.assertNotIn(name, readme, name)
+        for rel in ("Publish.ps1", "docs/BEFORE-UPLOAD.md", "docs/GITHUB-SETUP.md", "tools/set_repo.py"):
+            self.assertFalse((ROOT / rel).exists(), rel)
+
+    def test_no_old_username_and_links_use_krvats(self):
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or ".git" in path.parts or "maintainer" in path.parts or path.name == "test_theme.py":
+                continue
+            if path.suffix in {".png", ".jpg", ".zip", ".pyc"}:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            self.assertNotIn("krsna0001", text, str(path))
+            self.assertNotIn("YOUR-USERNAME", text, str(path))
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("github.com/krvats/caelestia-win", readme)
+
+    def test_version_badge_matches_changelog(self):
+        changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        top = re.search(r"^## (\d+\.\d+\.\d+)", changelog, flags=re.M).group(1)
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(f"badge/version-{top}-", readme)
+
+
 class RepoTests(unittest.TestCase):
     def test_powershell_files_are_ascii(self):
         for p in ROOT.rglob("*.ps1"):
@@ -325,7 +376,9 @@ class RepoTests(unittest.TestCase):
 
     def test_required_repo_files(self):
         for rel in ("LICENSE", ".gitignore", "CHANGELOG.md", "CONTRIBUTING.md", ".github/workflows/ci.yml",
-                    "docs/TROUBLESHOOTING.md", "docs/CUSTOMIZING.md", "Install.ps1", "Uninstall.ps1"):
+                    "docs/TROUBLESHOOTING.md", "docs/CUSTOMIZING.md", "docs/ANIMATED.md", "Install.ps1", "Uninstall.ps1",
+                    ".github/workflows/release.yml", "scripts/settings.ps1", "scripts/settings-lib.ps1",
+                    "scripts/live-guard.ps1"):
             self.assertTrue((ROOT / rel).is_file(), rel)
 
     def test_installer_references_existing_package_files(self):

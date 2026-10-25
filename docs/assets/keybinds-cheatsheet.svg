@@ -14,8 +14,8 @@
 <text x="62" y="234" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt E</text>
 <text x="115" y="234" font-size="13" fill="#b0aab8">Explorer</text>
 <rect x="54" y="247" width="51" height="24" rx="7" fill="#2b2833"/>
-<text x="62" y="264" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt B</text>
-<text x="115" y="264" font-size="13" fill="#b0aab8">Browser</text>
+<text x="62" y="264" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt S</text>
+<text x="115" y="264" font-size="13" fill="#b0aab8">Settings</text>
 <rect x="54" y="277" width="51" height="24" rx="7" fill="#2b2833"/>
 <text x="62" y="294" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt P</text>
 <text x="115" y="294" font-size="13" fill="#b0aab8">Screenshot</text>

@@ -4,15 +4,15 @@
 
 <br>
 
-[![CI](https://img.shields.io/github/actions/workflow/status/krsna0001/caelestia-win/ci.yml?branch=main&style=flat-square&label=CI&labelColor=1c1b20&color=b8a4f5)](https://github.com/krsna0001/caelestia-win/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/krvats/caelestia-win/ci.yml?branch=main&style=flat-square&label=CI&labelColor=1c1b20&color=b8a4f5)](https://github.com/krvats/caelestia-win/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-b8a4f5?style=flat-square&labelColor=1c1b20)](LICENSE)
 [![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011-b8a4f5?style=flat-square&labelColor=1c1b20)](#requirements)
-[![Release](https://img.shields.io/github/v/release/krsna0001/caelestia-win?style=flat-square&labelColor=1c1b20&color=b8a4f5)](https://github.com/krsna0001/caelestia-win/releases)
+[![Version 1.2.0](https://img.shields.io/badge/version-1.2.0-b8a4f5?style=flat-square&labelColor=1c1b20)](https://github.com/krvats/caelestia-win/releases)
 
-**Tiling. Rounded glowing borders. A floating bar that replaces the taskbar. Colours that follow your wallpaper.**<br>
+**Tiling. Rounded glowing borders. A floating bar that replaces the taskbar. Colours that follow your wallpaper, even a video one.**<br>
 A Windows tiling window manager setup ("rice") inspired by [Caelestia](https://github.com/caelestia-dots/shell) and Hyprland, built on komorebi, YASB and whkd, installed with one command on Windows 10 and 11.
 
-[Install](#install) &nbsp;·&nbsp; [Beginner guide](docs/GETTING-STARTED.md) &nbsp;·&nbsp; [Themes](#themes) &nbsp;·&nbsp; [Keybinds](docs/KEYBINDS.md) &nbsp;·&nbsp; [Commands](#the-cw-command) &nbsp;·&nbsp; [Customize](docs/CUSTOMIZING.md) &nbsp;·&nbsp; [Troubleshooting](docs/TROUBLESHOOTING.md)
+[Install](#install) &nbsp;·&nbsp; [Beginner guide](docs/GETTING-STARTED.md) &nbsp;·&nbsp; [Settings window](#settings-window-no-files-no-commands) &nbsp;·&nbsp; [Animated wallpapers](#animated-wallpapers) &nbsp;·&nbsp; [Themes](#themes) &nbsp;·&nbsp; [Keybinds](docs/KEYBINDS.md) &nbsp;·&nbsp; [Commands](#the-cw-command) &nbsp;·&nbsp; [Customize](docs/CUSTOMIZING.md) &nbsp;·&nbsp; [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 </div>
 
@@ -41,6 +41,8 @@ It runs at the desktop level, not as a window. It tiles your real apps with wide
 | Launcher | Quickshell | [Flow Launcher](https://www.flowlauncher.com/), `Alt+Space` |
 | Session panel | Quickshell | YASB power menu |
 | Wallpaper colours | Material You | `theme.py`, Material-style palette from the wallpaper |
+| Animated (video / GIF) wallpapers | [caelestia-aw](https://github.com/AdiAmbassador/caelestia-aw) patch | [Lively Wallpaper](https://github.com/rocksdanister/lively) + FFmpeg, driven by [`cw live`](docs/ANIMATED.md) |
+| Settings app | Nexus settings | [Settings window](#settings-window-no-files-no-commands), `Alt` `S` |
 | `caelestia` CLI | yes | [`cw`](#the-cw-command) |
 
 <br>
@@ -50,6 +52,7 @@ It runs at the desktop level, not as a window. It tiles your real apps with wide
 1. Run the installer (below), then **sign out and in once**.
 2. Press `Alt` `Enter` twice: two terminals tile side by side.
 3. Press `Alt` `W`: a new wallpaper, and the whole desktop recolours.
+3. Press `Alt` `S` (or open **Caelestia Settings** from the Start menu): change colours, gaps, bar and shortcuts with buttons, no files needed.
 4. Press `Alt` `Space` to launch apps, `Alt` `1`..`9` to switch workspaces.
 5. Lost? Run `cw keys` for the cheat sheet or `cw doctor` to fix problems.
 
@@ -66,7 +69,7 @@ New to tiling window managers? Read the [beginner guide](docs/GETTING-STARTED.md
 **Requirements:** Windows 10 (2004+) or 11, [winget](https://learn.microsoft.com/windows/package-manager/) (included with current Windows), an internet connection. No administrator needed.
 
 ```powershell
-git clone https://github.com/krsna0001/caelestia-win
+git clone https://github.com/krvats/caelestia-win
 cd caelestia-win
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1
 ```
@@ -88,6 +91,7 @@ Then sign out and back in once so every app picks up the new font. From now on e
 | `-SkipLauncher` | Do not install Flow Launcher |
 | `-SkipFont` | Do not install the Nerd Font |
 | `-KeepConfigs` | Keep existing komorebi / whkd / YASB configs instead of replacing them |
+| `-WithAnimated` | Also install Lively Wallpaper and FFmpeg so video and GIF wallpapers work (or add them later with `cw live install`) |
 | `-NoPause` | Do not wait for Enter at the end (the window stays open by default so you can read errors) |
 
 Anything it would replace is backed up first to `~\.config\caelestia-win\backup-<time>`. Everything it prints is also saved to `~\.config\caelestia-win\install.log`.
@@ -105,9 +109,52 @@ Anything it would replace is backed up first to `~\.config\caelestia-win\backup-
 4. Adds the `cw` command to your user PATH and sets `KOMOREBI_CONFIG_HOME` / `WHKD_CONFIG_HOME`.
 5. Installs Pillow for the user, downloads komorebi's per-app rules.
 6. Generates colours from your current wallpaper.
-7. Adds a login entry (`HKCU\...\Run`), enables YASB autostart, starts everything now and auto-hides the Windows taskbar.
+7. Adds a login entry (`HKCU\...\Run`), a Start menu entry for the settings window, enables YASB autostart, starts everything now and auto-hides the Windows taskbar.
+8. If a program is installed but "not found", looks for it in the usual folders and adds it to your PATH.
 
 </details>
+
+<br>
+
+## Settings window (no files, no commands)
+
+Press `Alt` `S`, use **Caelestia Settings** in the Start menu, or run `cw settings`.
+
+| Page | What you can change |
+|---|---|
+| Colours | Theme (auto + 9 colour themes + 9 community themes), dark or light, colour style, live colour swatches |
+| Wallpaper | Thumbnails of your pictures and your animated wallpapers: click to set, next, random, add files, volume, pause rules |
+| Windows | Space around the screen and between windows, border thickness, default layout, animations |
+| Bar | Top or bottom, height, and a tick list of every item in the bar |
+| Shortcuts | A table of every keyboard shortcut: edit, add an app, delete, save |
+| System | Start at sign-in, hide or show the Windows taskbar, restart, health check, open config folders |
+
+Every button edits the same files the installer made and applies the result straight away. A copy of each file is saved to `~\.config\caelestia-win\backup-settings` first, so power users can still edit files by hand.
+
+<br>
+
+## Animated wallpapers
+
+Video and GIF wallpapers, like the [caelestia-aw](https://github.com/AdiAmbassador/caelestia-aw) fork adds on Linux. [Lively Wallpaper](https://github.com/rocksdanister/lively) draws the video behind your windows; caelestia-win adds the colours, thumbnails and pause rules.
+
+```powershell
+cw live install             # one time: Lively Wallpaper + FFmpeg (or install with -WithAnimated)
+# put .mp4 .webm .mkv .gif files in  ~\Pictures\Wallpapers\Animated
+cw live next                # Ctrl+Alt+W; also random | prev | set <file>
+cw live stop                # Ctrl+Alt+Shift+W, back to your picture wallpaper
+```
+
+| caelestia-aw feature | caelestia-win |
+|---|---|
+| MP4, WebM, MKV, GIF | Same, plus MOV and AVI |
+| Separate "Animated" library | `Pictures\Wallpapers\Animated` and an **Animated** view in the settings window |
+| Thumbnails cached by file | `cw live thumbs`, cached by name, size and date |
+| Colours from a frame of the video | The whole desktop recolours from a frame (needs FFmpeg) |
+| Pause on battery or fullscreen app | Both on by default, each can be switched off: `cw live rules battery off` |
+| Live preview while browsing | "Preview while I click through the list" in the settings window |
+| Hardware decoding choice | Lively settings, opened by `cw live settings` |
+
+More in [docs/ANIMATED.md](docs/ANIMATED.md).
 
 <br>
 
@@ -180,10 +227,11 @@ Windows reserves most `Win` combinations, so **Alt** is the main modifier. The f
 | `Alt` `Shift` `W` | Random wallpaper | | `Alt` `Arrows` | Stack windows as tabs |
 | `Alt` `Shift` `T` | Dark / light | | `Alt` `;` `[` `]` | Unstack, cycle tabs |
 | `Alt` `Shift` `O` | Reload config | | `Ctrl` `Alt` `L` | Lock |
+| `Alt` `S` | Settings window | | `Ctrl` `Alt` `W` | Next animated wallpaper |
 
 Everything lives in `~\.config\whkd\whkdrc`. Edit, then press `Alt` `Shift` `O`.
 
-Put wallpapers in `~\Pictures\Wallpapers`. `Alt` `W` cycles through them and recolours everything.
+Put wallpapers in `~\Pictures\Wallpapers`. `Alt` `W` cycles through them and recolours everything. Animated ones go in `Wallpapers\Animated` and use `Ctrl` `Alt` `W`.
 
 <br>
 
@@ -193,6 +241,10 @@ Open a new terminal after installing.
 
 ```text
 cw wallpaper next | prev | random | set <file> | current
+cw live next | prev | random | set <file> | stop | pause | resume | volume <0-100>
+cw live rules battery | fullscreen on | off
+cw live list | thumbs | status | install | settings
+cw settings           open the settings window
 cw preset <name> | auto | list
 cw scheme dark | light | toggle
 cw variant tonal | vibrant | muted | mono
@@ -256,10 +308,9 @@ Open a few windows after installing and press `Alt` `H J K L` to move focus. If 
 | [Getting started](docs/GETTING-STARTED.md) | First-time users, step by step |
 | [Shortcuts and productivity](docs/KEYBINDS.md) | Every key, plus habits that make you fast |
 | [Customizing](docs/CUSTOMIZING.md) | Colours, bar, gaps, rules |
+| [Animated wallpapers](docs/ANIMATED.md) | Video and GIF wallpapers, pause rules, tips |
 | [Screenshots](docs/SCREENSHOTS.md) | Capture and share your setup |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | When something looks wrong |
-| [Before you upload](docs/BEFORE-UPLOAD.md) | Maintainers: checklist and one-command publishing |
-| [Discoverability](docs/GITHUB-SETUP.md) | Maintainers: topics, Pages, releases, where to share |
 
 <br>
 
@@ -304,7 +355,7 @@ Yes. Each piece is independent. Delete the YASB lines you do not want, or instal
 <details>
 <summary><b>Something broke.</b></summary>
 <br>
-Run <code>cw doctor</code>, then see <a href="docs/TROUBLESHOOTING.md">troubleshooting</a>. Still stuck? <a href="https://github.com/krsna0001/caelestia-win/issues/new/choose">Open an issue</a> with the doctor output.
+Run <code>cw doctor</code>, then see <a href="docs/TROUBLESHOOTING.md">troubleshooting</a>. Still stuck? <a href="https://github.com/krvats/caelestia-win/issues/new/choose">Open an issue</a> with the doctor output.
 </details>
 
 <br>
@@ -315,7 +366,7 @@ Run <code>cw doctor</code>, then see <a href="docs/TROUBLESHOOTING.md">troublesh
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Uninstall.ps1
 ```
 
-Stops everything, restores the taskbar and removes autostart. If komorebi borders stay off afterwards, run `komorebic border enable`. Add `-RestoreBackup` to bring back your earlier configs, `-RemoveApps` to uninstall komorebi, whkd and YASB, `-RemoveConfig` to delete the config folders.
+Stops everything, restores the taskbar and removes autostart and the Start menu entry. Lively Wallpaper and FFmpeg (if you added them) stay installed. If komorebi borders stay off afterwards, run `komorebic border enable`. Add `-RestoreBackup` to bring back your earlier configs, `-RemoveApps` to uninstall komorebi, whkd and YASB, `-RemoveConfig` to delete the config folders.
 
 <br>
 
@@ -334,14 +385,14 @@ Stops everything, restores the taskbar and removes autostart. If komorebi border
 ## Project layout
 
 ```text
-Setup.bat  Install.ps1  Uninstall.ps1  Publish.ps1
+Setup.bat  Install.ps1  Uninstall.ps1
 config/      komorebi.json · whkdrc · yasb/config.yaml
 templates/   yasb.styles.css.tmpl · tacky-borders.config.yaml.tmpl
-scripts/     cw.ps1 · theme.py · start.ps1
+scripts/     cw.ps1 · settings.ps1 · settings-lib.ps1 · live-guard.ps1 · theme.py · start.ps1
 wallpapers/  caelestia-default.jpg
-docs/        CUSTOMIZING.md · TROUBLESHOOTING.md · assets/
-tools/       make_previews.py · set_repo.py
-tests/       test_theme.py
+docs/        CUSTOMIZING.md · ANIMATED.md · TROUBLESHOOTING.md · assets/
+tools/       make_previews.py
+tests/       test_theme.py · settings-lib.tests.ps1
 optional/    Build-Dashboard.ps1
 ```
 
@@ -349,6 +400,6 @@ optional/    Build-Dashboard.ps1
 
 ## Credits
 
-Built on [komorebi](https://github.com/LGUG2Z/komorebi) and [whkd](https://github.com/LGUG2Z/whkd) by LGUG2Z, [YASB](https://github.com/amnweb/yasb) by AmN, [tacky-borders](https://github.com/lukeyou05/tacky-borders) by lukeyou05 and [Flow Launcher](https://www.flowlauncher.com/). Look and feel inspired by [Caelestia](https://github.com/caelestia-dots/shell). Released under the [MIT License](LICENSE).
+Animated wallpapers are played by [Lively Wallpaper](https://github.com/rocksdanister/lively) by rocksdanister, and the feature set follows [caelestia-aw](https://github.com/AdiAmbassador/caelestia-aw) by AdiAmbassador. Built on [komorebi](https://github.com/LGUG2Z/komorebi) and [whkd](https://github.com/LGUG2Z/whkd) by LGUG2Z, [YASB](https://github.com/amnweb/yasb) by AmN, [tacky-borders](https://github.com/lukeyou05/tacky-borders) by lukeyou05 and [Flow Launcher](https://www.flowlauncher.com/). Look and feel inspired by [Caelestia](https://github.com/caelestia-dots/shell). Released under the [MIT License](LICENSE).
 
 <div align="center"><sub>If it makes your desktop nicer, a ★ helps others find it.</sub></div>

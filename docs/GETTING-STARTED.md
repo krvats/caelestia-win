@@ -23,7 +23,7 @@ flowchart LR
 2. Paste this and press Enter:
 
 ```powershell
-git clone https://github.com/krsna0001/caelestia-win
+git clone https://github.com/krvats/caelestia-win
 cd caelestia-win
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1
 ```
@@ -48,6 +48,10 @@ No git? On the GitHub page click **Code → Download ZIP**, extract it, open the
 | Press `Alt` `W` | Next wallpaper, and the colours change with it |
 
 ## Step 3: Make it yours
+
+Press `Alt` `S` (or open **Caelestia Settings** from the Start menu). Every page has buttons for what you want to change, and nothing needs a file or a command. Want a moving wallpaper? Open **Wallpaper > Animated** and click **Install animated wallpaper support**.
+
+Prefer the terminal? These do the same:
 
 ```powershell
 cw preset ocean      # pick a colour theme (cw preset list shows all)

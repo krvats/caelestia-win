@@ -13,10 +13,11 @@ alt + shift + r : komorebic retile
 ctrl + alt + l : rundll32.exe user32.dll,LockWorkStation
 
 # ---------------------------------------------------------------- apps
-alt + return : wt.exe
+alt + return : if (Get-Command wt.exe -ErrorAction SilentlyContinue) { wt.exe } else { Start-Process powershell.exe }
 alt + e : explorer.exe
 alt + b : Start-Process "https://www.google.com"
 alt + p : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" screenshot
+alt + s : powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\settings.ps1"
 
 # ---------------------------------------------------------------- windows
 alt + q : komorebic close
@@ -84,3 +85,7 @@ alt + shift + 9 : komorebic move-to-workspace 8
 alt + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" wallpaper next
 alt + shift + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" wallpaper random
 alt + shift + t : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" scheme toggle
+
+# ---------------------------------------------------------------- animated wallpaper (needs: cw live install)
+ctrl + alt + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" live next
+ctrl + alt + shift + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" live stop

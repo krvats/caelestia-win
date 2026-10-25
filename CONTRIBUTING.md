@@ -5,7 +5,7 @@ Thanks for helping. The project is small on purpose: configs, a colour generator
 ## Setup
 
 ```powershell
-git clone https://github.com/krsna0001/caelestia-win
+git clone https://github.com/krvats/caelestia-win
 cd caelestia-win
 python -m pip install pillow pyyaml
 python tests/test_theme.py

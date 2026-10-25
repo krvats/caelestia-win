@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0
+
+- **Settings window** (`Alt` `S`, Start menu, `cw settings`): colours and themes, wallpaper thumbnails, gaps, borders and layout, bar position and items, and an editable table of every keyboard shortcut. No file editing needed. Every file is backed up before it is changed
+- **Animated wallpapers** (video and GIF) like the caelestia-aw fork: `cw live next|prev|random|set|stop|pause|resume|volume|list|thumbs|status|install|settings`, played by Lively Wallpaper, desktop colours taken from a frame of the video, cached thumbnails, an Animated library folder, `Ctrl` `Alt` `W`
+- Pause rules for animated wallpapers: on battery power and when an app is fullscreen (`cw live rules ...`)
+- Installer: `-WithAnimated`, a Start menu entry, finds tools that winget left off PATH and adds them, keeps a default copy of the shortcuts for "Reset to defaults"
+- Fixes for "not found": `cw`, the login script and the settings window re-read PATH, so hotkeys no longer fail with "komorebic is not recognised" right after installing; `Alt` `Enter` falls back to PowerShell when Windows Terminal is missing
+- All repository links point to github.com/krvats/caelestia-win; the README version badge no longer shows "no releases"; pushing a `v*` tag now builds the zip and creates the GitHub release
+- Maintainer-only files (publishing script, upload checklists) moved to a git-ignored `maintainer` folder
+
 ## 1.1.2
 
 - Installer finds tacky-borders in the last releases (and correctly reads the GitHub release list on Windows PowerShell 5.1) and accepts .exe, .zip or .msi files (fixes "latest release has no .exe file")

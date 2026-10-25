@@ -30,6 +30,10 @@
 .PARAMETER KeepConfigs
     If komorebi.json, whkdrc or the YASB config already exist, leave them alone.
 
+.PARAMETER WithAnimated
+    Also install animated wallpaper support (Lively Wallpaper and FFmpeg) so video and GIF wallpapers work.
+    You can add it later with: cw live install   (or the button in the settings window)
+
 .PARAMETER NoPause
     Do not wait for Enter at the end. By default the window stays open so you can read errors.
 
@@ -43,6 +47,7 @@ param(
     [switch]$SkipLauncher,
     [switch]$SkipFont,
     [switch]$KeepConfigs,
+    [switch]$WithAnimated,
     [switch]$NoPause
 )
 
@@ -54,6 +59,7 @@ $KomorebiHome = Join-Path $HOME '.config\komorebi'
 $WhkdHome     = Join-Path $HOME '.config\whkd'
 $YasbHome     = Join-Path $HOME '.config\yasb'
 $WallDir      = Join-Path $HOME 'Pictures\Wallpapers'
+$LiveDir      = Join-Path $WallDir 'Animated'
 $BinDir       = Join-Path $CwHome 'bin'
 $Stamp        = Get-Date -Format 'yyyyMMdd-HHmmss'
 $BackupRoot   = Join-Path $CwHome ("backup-" + $Stamp)
@@ -70,7 +76,43 @@ function Write-Note([string]$Text) { Write-Host ('    ' + $Text) }
 function Update-SessionPath {
     $machine = [Environment]::GetEnvironmentVariable('Path', 'Machine')
     $user    = [Environment]::GetEnvironmentVariable('Path', 'User')
-    $env:Path = $machine + ';' + $user
+    $seen = @{}
+    $parts = New-Object System.Collections.Generic.List[string]
+    foreach ($src in @($env:Path, $machine, $user, (Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Links'))) {
+        if (-not $src) { continue }
+        foreach ($d in ($src -split ';')) {
+            if ($d -and -not $seen.ContainsKey($d.ToLower())) { $seen[$d.ToLower()] = $true; $parts.Add($d) }
+        }
+    }
+    $env:Path = ($parts -join ';')
+}
+
+# winget does not always put a program on PATH. If a tool is still "not found", look for it in the usual places
+# and add its folder to the PATH of this window and of your account, so hotkeys and new terminals find it too.
+function Add-ToolToPath([string]$Exe, [string[]]$PackageFilters) {
+    if (Test-Tool $Exe) { return }
+    $roots = New-Object System.Collections.Generic.List[string]
+    foreach ($base in @($env:ProgramFiles, ${env:ProgramFiles(x86)}, (Join-Path $env:LOCALAPPDATA 'Programs'))) {
+        if ($base) { foreach ($f in $PackageFilters) { $roots.Add((Join-Path $base $f)) } }
+    }
+    $pk = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages'
+    if (Test-Path -LiteralPath $pk) {
+        foreach ($d in (Get-ChildItem -LiteralPath $pk -Directory -ErrorAction SilentlyContinue)) {
+            foreach ($f in $PackageFilters) { if ($d.Name -like ($f + '*')) { $roots.Add($d.FullName) } }
+        }
+    }
+    foreach ($root in $roots) {
+        if (-not (Test-Path -LiteralPath $root)) { continue }
+        $hit = Get-ChildItem -LiteralPath $root -Recurse -Filter ($Exe + '.exe') -ErrorAction SilentlyContinue | Select-Object -First 1
+        if ($hit) {
+            $dir = $hit.DirectoryName
+            $env:Path += ';' + $dir
+            $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+            if ((($userPath -split ';') -notcontains $dir)) { [Environment]::SetEnvironmentVariable('Path', (($userPath.TrimEnd(';')) + ';' + $dir), 'User') }
+            Write-Note "found $Exe in $dir and added it to PATH"
+            return
+        }
+    }
 }
 
 function Test-Tool([string]$Name) { return [bool](Get-Command $Name -ErrorAction SilentlyContinue) }
@@ -115,7 +157,7 @@ if ($isAdmin) { Write-Warning 'You are running as administrator. This is not nee
 if (-not (Test-Tool 'winget')) {
     throw 'winget was not found. Install "App Installer" from the Microsoft Store, then run this script again.'
 }
-foreach ($p in @('scripts\cw.ps1', 'scripts\theme.py', 'scripts\start.ps1', 'templates\yasb.styles.css.tmpl', 'templates\tacky-borders.config.yaml.tmpl',
+foreach ($p in @('scripts\cw.ps1', 'scripts\theme.py', 'scripts\start.ps1', 'scripts\settings.ps1', 'scripts\settings-lib.ps1', 'scripts\live-guard.ps1', 'templates\yasb.styles.css.tmpl', 'templates\tacky-borders.config.yaml.tmpl',
                  'config\komorebi\komorebi.json', 'config\whkd\whkdrc', 'config\yasb\config.yaml')) {
     if (-not (Test-Path -LiteralPath (Join-Path $Root $p))) { throw "Package file missing: $p. Extract the whole zip before running." }
 }
@@ -128,6 +170,10 @@ Install-WingetPackage 'LGUG2Z.whkd'     'whkd (hotkey daemon)'
 Install-WingetPackage 'AmN.yasb'        'YASB (status bar)'
 if (-not $SkipLauncher) { Install-WingetPackage 'Flow-Launcher.Flow-Launcher' 'Flow Launcher (app launcher)' }
 if (-not $SkipFont)     { Install-WingetPackage 'DEVCOM.JetBrainsMonoNerdFont' 'JetBrainsMono Nerd Font' }
+if ($WithAnimated) {
+    Install-WingetPackage 'rocksdanister.LivelyWallpaper' 'Lively Wallpaper (plays video and GIF wallpapers)'
+    Install-WingetPackage 'Gyan.FFmpeg' 'FFmpeg (thumbnails and colours for animated wallpapers)'
+}
 
 Update-SessionPath
 $havePython = (Test-Tool 'py') -or ((Get-Command 'python' -ErrorAction SilentlyContinue) -and ((Get-Command 'python').Source -notlike '*\WindowsApps\*'))
@@ -142,17 +188,21 @@ if (-not (Test-Tool 'yasbc')) {
         if (Test-Path -LiteralPath (Join-Path $dir 'yasbc.exe')) { $env:Path += ';' + $dir; break }
     }
 }
+Add-ToolToPath 'komorebic' @('komorebi', 'LGUG2Z.komorebi')
+Add-ToolToPath 'whkd' @('whkd', 'komorebi', 'LGUG2Z.whkd')
 foreach ($t in @('komorebic', 'whkd', 'yasbc')) {
     if (-not (Test-Tool $t)) { Write-Warning "$t is still not on PATH. Open a NEW terminal after the install and run:  cw doctor" }
 }
 
 # ------------------------------------------------------------------------------------------ 2. files
 Write-Step 'Copying configuration'
-New-Item -ItemType Directory -Force -Path $CwHome, $BinDir, (Join-Path $CwHome 'templates'), $WallDir | Out-Null
+New-Item -ItemType Directory -Force -Path $CwHome, $BinDir, (Join-Path $CwHome 'templates'), (Join-Path $CwHome 'defaults'), $WallDir, $LiveDir | Out-Null
 
-Copy-Item -LiteralPath (Join-Path $Root 'scripts\cw.ps1')    -Destination (Join-Path $CwHome 'cw.ps1')    -Force
-Copy-Item -LiteralPath (Join-Path $Root 'scripts\start.ps1') -Destination (Join-Path $CwHome 'start.ps1') -Force
-Copy-Item -LiteralPath (Join-Path $Root 'scripts\theme.py')  -Destination (Join-Path $CwHome 'theme.py')  -Force
+foreach ($name in @('cw.ps1', 'start.ps1', 'theme.py', 'settings.ps1', 'settings-lib.ps1', 'live-guard.ps1')) {
+    Copy-Item -LiteralPath (Join-Path $Root ('scripts\' + $name)) -Destination (Join-Path $CwHome $name) -Force
+}
+# an untouched copy of the shortcuts, so the settings window can offer "Reset to defaults"
+Copy-Item -LiteralPath (Join-Path $Root 'config\whkd\whkdrc') -Destination (Join-Path $CwHome 'defaults\whkdrc') -Force
 Copy-Item -LiteralPath (Join-Path $Root 'templates\yasb.styles.css.tmpl') -Destination (Join-Path $CwHome 'templates\yasb.styles.css.tmpl') -Force
 Copy-Item -LiteralPath (Join-Path $Root 'templates\tacky-borders.config.yaml.tmpl') -Destination (Join-Path $CwHome 'templates\tacky-borders.config.yaml.tmpl') -Force
 
@@ -185,6 +235,21 @@ if (-not (Get-CimInstance -ClassName Win32_Battery -ErrorAction SilentlyContinue
     [System.IO.File]::WriteAllLines($yasbCfg, [string[]]$kept, $utf8)
     Write-Note 'no battery found: removed the battery widget from the bar'
 }
+
+# Start menu entry for the settings window
+try {
+    $programs = Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs'
+    $lnk = Join-Path $programs 'Caelestia Settings.lnk'
+    $shell = New-Object -ComObject WScript.Shell
+    $sc = $shell.CreateShortcut($lnk)
+    $sc.TargetPath = (Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe')
+    $sc.Arguments = '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + (Join-Path $CwHome 'settings.ps1') + '"'
+    $sc.WorkingDirectory = $CwHome
+    $sc.Description = 'caelestia-win settings: colours, wallpapers, gaps, bar and shortcuts'
+    $sc.IconLocation = (Join-Path $env:SystemRoot 'System32\imageres.dll') + ',109'
+    $sc.Save()
+    Write-Note 'added "Caelestia Settings" to the Start menu (or press Alt+S)'
+} catch { Write-Warning "Could not create the Start menu shortcut ($_). Open the settings with Alt+S or: cw settings" }
 
 # the "cw" command
 Set-Content -LiteralPath (Join-Path $BinDir 'cw.cmd') -Encoding ASCII -Value @(
@@ -370,9 +435,11 @@ Write-Host 'Try these:'
 Write-Host '  Alt+Enter          terminal            Alt+Space   launcher (Flow Launcher)'
 Write-Host '  Alt+H/J/K/L        focus windows       Alt+Shift+H/J/K/L   move windows'
 Write-Host '  Alt+1..9           workspaces          Alt+Shift+1..9      send window to workspace'
+Write-Host '  Alt+S              SETTINGS WINDOW (colours, wallpapers, gaps, bar, shortcuts)'
 Write-Host '  Alt+W              next wallpaper + new colours'
 Write-Host '  Alt+Shift+T        dark / light        Alt+Q       close window'
 Write-Host '  cw preset ocean    pick a colour theme (cw preset auto follows the wallpaper)'
+Write-Host '  cw live install    add animated (video / GIF) wallpapers'
 Write-Host ''
 Write-Host 'If anything looks wrong, open a NEW terminal and run:  cw doctor'
 Write-Host 'Open a NEW terminal to use the "cw" command. Sign out and in once so the Nerd Font is picked up by every app.'

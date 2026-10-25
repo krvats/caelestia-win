@@ -3,7 +3,7 @@
     Removes caelestia-win autostart and (optionally) its apps and configs.
 
 .PARAMETER RemoveApps
-    Also uninstall komorebi, whkd and YASB with winget. Flow Launcher and the font are kept.
+    Also uninstall komorebi, whkd and YASB with winget. Flow Launcher, the font, Lively Wallpaper and FFmpeg are kept.
 
 .PARAMETER RemoveConfig
     Also delete ~/.config/caelestia-win, komorebi, whkd and yasb config folders.
@@ -34,6 +34,11 @@ if (Test-Path -LiteralPath $cw) {
     try { & $cw 'taskbar' 'show' } catch { Write-Warning "Could not restore the taskbar: $_" }
 }
 
+Write-Step 'Stopping the animated wallpaper guard'
+Get-CimInstance -ClassName Win32_Process -Filter "Name='powershell.exe'" -ErrorAction SilentlyContinue |
+    Where-Object { $_.CommandLine -like '*live-guard.ps1*' } |
+    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+
 Write-Step 'Stopping komorebi, whkd and YASB'
 & komorebic stop --whkd 2>$null | Out-Null
 & yasbc stop 2>$null | Out-Null
@@ -42,6 +47,7 @@ foreach ($name in @('komorebi', 'whkd', 'yasb', 'tacky-borders')) { Get-Process 
 
 Write-Step 'Removing autostart and environment variables'
 Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'CaelestiaWin' -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath (Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Caelestia Settings.lnk') -Force -ErrorAction SilentlyContinue
 [Environment]::SetEnvironmentVariable('KOMOREBI_CONFIG_HOME', $null, 'User')
 [Environment]::SetEnvironmentVariable('WHKD_CONFIG_HOME', $null, 'User')
 $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
@@ -89,4 +95,4 @@ if ($RemoveConfig) {
 Write-Host ''
 Write-Host 'caelestia-win removed.' -ForegroundColor Green
 if (-not $RemoveConfig) { Write-Host "Your config files were left in place under $HOME\.config (use -RemoveConfig to delete)." }
-Write-Host 'Wallpapers in Pictures\Wallpapers were not touched.'
+Write-Host 'Wallpapers in Pictures\Wallpapers were not touched. Lively Wallpaper and FFmpeg (if you added them) are kept; remove them from Windows Settings > Apps.'

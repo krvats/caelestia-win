@@ -11,6 +11,7 @@
 | Apps | `Alt` `Enter` | Terminal |
 | | `Alt` `Space` | Launcher (Flow Launcher) |
 | | `Alt` `E` / `Alt` `B` | File Explorer / browser |
+| | `Alt` `S` | Settings window (colours, wallpapers, gaps, bar, shortcuts) |
 | | `Alt` `P` | Screenshot to `Pictures\caelestia-win-screenshots` |
 | Windows | `Alt` `Q` | Close |
 | | `Alt` `M` | Minimise |
@@ -31,6 +32,8 @@
 | Theme | `Alt` `W` | Next wallpaper and colours |
 | | `Alt` `Shift` `W` | Random wallpaper |
 | | `Alt` `Shift` `T` | Dark / light |
+| | `Ctrl` `Alt` `W` | Next animated wallpaper |
+| | `Ctrl` `Alt` `Shift` `W` | Stop the animated wallpaper |
 | Session | `Alt` `Shift` `O` | Reload config |
 | | `Alt` `Shift` `R` | Retile |
 | | `Alt` `Shift` `E` | Stop tiling |
@@ -75,7 +78,9 @@
 
 ## Make your own shortcut
 
-Open `~\.config\whkd\whkdrc` and add a line:
+Easiest: press `Alt` `S`, open the **Shortcuts** page, use **Add an app ...** or edit the table, then **Save shortcuts**.
+
+By hand: open `~\.config\whkd\whkdrc` and add a line:
 
 ```text
 alt + n : notepad.exe
