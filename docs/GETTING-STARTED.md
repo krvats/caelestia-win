@@ -4,14 +4,6 @@ This guide takes you from nothing to a working tiling desktop in about 10 minute
 
 ## What you are getting
 
-```mermaid
-flowchart LR
-    A[Your wallpaper] -->|colours| B[Floating top bar]
-    A -->|colours| C[Glowing window borders]
-    D[Your apps] -->|auto-arranged| E[Tiled windows, 9 workspaces]
-    F[Keyboard shortcuts] --> E
-```
-
 - **Tiling**: windows arrange themselves side by side, so you never drag or resize by hand.
 - **A top bar**: shows workspaces, running apps, time, battery, volume.
 - **Colours from your wallpaper**: change the picture and the whole desktop recolours.

@@ -410,12 +410,11 @@ if ($SetWallpaper -and (Test-Path -LiteralPath $defaultWall)) {
 
 # ------------------------------------------------------------------------------------------ 6. autostart + launch
 Write-Step 'Enabling autostart and starting everything'
-$startScript = Join-Path $CwHome 'start.ps1'
-$runCmd = 'powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $startScript + '"'
-Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'CaelestiaWin' -Value $runCmd
+try { & $cw 'autostart' 'on' } catch { Write-Warning "Could not set up start at sign-in: $_  (try: cw autostart on)" }
 
+# our own sign-in script starts the bar (and retries), so YASB's separate autostart entry is switched off to avoid a double start
 if (Test-Tool 'yasbc') {
-    try { & yasbc enable-autostart | Out-Null } catch { Write-Warning "Could not enable YASB autostart: $_" }
+    try { & yasbc disable-autostart 2>$null | Out-Null } catch { }
 }
 try { & $cw 'start' } catch { Write-Warning "Could not start the stack automatically: $_  (try: cw doctor)" }
 

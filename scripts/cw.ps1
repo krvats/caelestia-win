@@ -16,6 +16,7 @@
     cw lock
     cw keys             print the keyboard shortcut cheat sheet
     cw screenshot       save a full-screen screenshot to Pictures\caelestia-win-screenshots
+    cw autostart on|off|status      start caelestia-win at sign-in (a scheduled task, no startup delay)
     cw settings         open the settings window (colours, wallpapers, gaps, bar, shortcuts)   Alt+S
     cw dashboard        open the optional Caelestia dashboard app, if it is installed
     cw status
@@ -442,7 +443,67 @@ function Invoke-LiveCommand {
             Set-LiveWallpaper $list[$idx].FullName
             return
         }
-        default { throw 'Usage: cw live next|prev|random|set <file>|stop|pause|resume|volume <0-100>|rules battery|fullscreen on|off|list|thumbs|status|install|settings' }
+        'wallpaper' { Write-Output 'Use:  cw live next   (or random | prev | set <file>)'; return }
+        default {
+            if ($Sub) { Write-Output ('Unknown option "' + $Sub + '".') }
+            Write-Output 'cw live next | prev | random | set <file> | stop | pause | resume | volume <0-100>'
+            Write-Output 'cw live rules battery|fullscreen on|off | list | thumbs | status | install | settings'
+            Write-Output ''
+            & $PSCommandPath 'live' 'status'
+            return
+        }
+    }
+}
+
+# ----------------------------------------------------------------------------- autostart (runs at sign-in)
+# A scheduled "at log on" task starts caelestia-win the moment you sign in (no admin needed: it runs as you).
+# If Windows refuses the task, the HKCU Run key is used instead. Windows also normally waits ~10 seconds before it
+# runs Run-key programs; StartupDelayInMSec = 0 removes that wait.
+
+$AutostartTask = 'CaelestiaWin'
+$RunKeyPath    = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
+
+function Get-AutostartState {
+    if (Get-ScheduledTask -TaskName $AutostartTask -ErrorAction SilentlyContinue) { return 'task' }
+    if (Get-ItemProperty -Path $RunKeyPath -Name $AutostartTask -ErrorAction SilentlyContinue) { return 'runkey' }
+    return 'off'
+}
+
+function Set-Autostart([bool]$On) {
+    if (-not $On) {
+        Unregister-ScheduledTask -TaskName $AutostartTask -Confirm:$false -ErrorAction SilentlyContinue
+        Remove-ItemProperty -Path $RunKeyPath -Name $AutostartTask -ErrorAction SilentlyContinue
+        return
+    }
+    $startScript = Join-Path $CwHome 'start.ps1'
+    $psArgs = '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $startScript + '"'
+    $taskOk = $false
+    try {
+        $who = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+        $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $psArgs
+        $trigger = New-ScheduledTaskTrigger -AtLogOn -User $who
+        $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Seconds 0) -MultipleInstances IgnoreNew
+        $principal = New-ScheduledTaskPrincipal -UserId $who -LogonType Interactive -RunLevel Limited
+        [void](Register-ScheduledTask -TaskName $AutostartTask -Action $action -Trigger $trigger -Settings $settings -Principal $principal -Force -ErrorAction Stop)
+        $taskOk = $true
+    } catch {
+        Write-Output ('(a scheduled task was not allowed here: ' + $_.Exception.Message + ' - using the Run key instead)')
+    }
+    if ($taskOk) {
+        Remove-ItemProperty -Path $RunKeyPath -Name $AutostartTask -ErrorAction SilentlyContinue
+    } else {
+        Set-ItemProperty -Path $RunKeyPath -Name $AutostartTask -Value ('powershell.exe ' + $psArgs)
+    }
+    $ser = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize'
+    if (-not (Test-Path -LiteralPath $ser)) { New-Item -Path $ser -Force | Out-Null }
+    Set-ItemProperty -Path $ser -Name 'StartupDelayInMSec' -Value 0 -Type DWord
+}
+
+function Invoke-AutostartCommand {
+    switch ($Sub.ToLower()) {
+        'on'     { Set-Autostart $true;  Write-Output ('autostart: ' + (Get-AutostartState)) }
+        'off'    { Set-Autostart $false; Write-Output 'autostart: off' }
+        default  { Write-Output ('autostart: ' + (Get-AutostartState) + '   (cw autostart on | off)') }
     }
 }
 
@@ -602,6 +663,7 @@ function Invoke-Doctor {
     Check 'whkdrc'              (Test-Path (Join-Path $WhkdHome 'whkdrc'))            'run Install.ps1 again'
     Check 'YASB config.yaml'    (Test-Path (Join-Path $YasbHome 'config.yaml'))       'run Install.ps1 again'
     Check 'YASB styles.css'     (Test-Path (Join-Path $YasbHome 'styles.css'))        'run: cw theme'
+    Check 'starts at sign-in'    ((Get-AutostartState) -ne 'off')                      'run: cw autostart on'
     Check 'settings window'      (Test-Path (Join-Path $CwHome 'settings.ps1'))        'run Install.ps1 again'
     Check 'komorebi running'    ([bool](Get-Process -Name 'komorebi' -ErrorAction SilentlyContinue)) 'run: cw start'
     Check 'YASB running'        ([bool](Get-Process -Name 'yasb' -ErrorAction SilentlyContinue))     'run: cw start'
@@ -674,6 +736,7 @@ switch ($Command.ToLower()) {
     'variant'   { Invoke-VariantCommand }
     'preset'    { Invoke-PresetCommand }
     'live'      { Invoke-LiveCommand }
+    'autostart' { Invoke-AutostartCommand }
     'settings'  {
         $s = Join-Path $CwHome 'settings.ps1'
         if (-not (Test-Path -LiteralPath $s)) { throw "settings.ps1 is missing: $s. Re-run Install.ps1." }

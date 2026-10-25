@@ -936,20 +936,14 @@ $pgSys = New-Page
 $pgSys.Controls.Add((New-Heading 'System'))
 $pgSys.Controls.Add((New-Note 'Startup, the Windows taskbar, health check and folders.'))
 
-$runKey = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run'
-$script:chkAuto = New-Check 'Start caelestia-win when I sign in' ($null -ne (Get-ItemProperty -Path $runKey -Name 'CaelestiaWin' -ErrorAction SilentlyContinue))
+$autoNow = $false
+try {
+    if ((Get-ScheduledTask -TaskName 'CaelestiaWin' -ErrorAction SilentlyContinue) -or (Get-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'CaelestiaWin' -ErrorAction SilentlyContinue)) { $autoNow = $true }
+} catch { }
+$script:chkAuto = New-Check 'Start caelestia-win when I sign in (no startup delay)' $autoNow
 $chkAuto.Add_Click({
-    try {
-        $startScript = Join-Path $CwHome 'start.ps1'
-        if ($script:chkAuto.Checked) {
-            $cmd = 'powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $startScript + '"'
-            Set-ItemProperty -Path $runKey -Name 'CaelestiaWin' -Value $cmd
-            Set-Status 'caelestia-win will start at sign-in.'
-        } else {
-            Remove-ItemProperty -Path $runKey -Name 'CaelestiaWin' -ErrorAction SilentlyContinue
-            Set-Status 'caelestia-win will not start at sign-in.'
-        }
-    } catch { Set-Status ('Problem: ' + $_.Exception.Message) $true }
+    if ($script:chkAuto.Checked) { [void](Invoke-CwStatus @('autostart', 'on') 'caelestia-win will start the moment you sign in.') }
+    else { [void](Invoke-CwStatus @('autostart', 'off') 'caelestia-win will not start at sign-in.') }
 })
 $pgSys.Controls.Add($chkAuto)
 $pgSys.Controls.Add((New-Note ''))

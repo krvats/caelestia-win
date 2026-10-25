@@ -47,6 +47,7 @@ foreach ($name in @('komorebi', 'whkd', 'yasb', 'tacky-borders')) { Get-Process 
 
 Write-Step 'Removing autostart and environment variables'
 Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'CaelestiaWin' -ErrorAction SilentlyContinue
+Unregister-ScheduledTask -TaskName 'CaelestiaWin' -Confirm:$false -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath (Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Caelestia Settings.lnk') -Force -ErrorAction SilentlyContinue
 [Environment]::SetEnvironmentVariable('KOMOREBI_CONFIG_HOME', $null, 'User')
 [Environment]::SetEnvironmentVariable('WHKD_CONFIG_HOME', $null, 'User')

@@ -333,6 +333,24 @@ class SettingsAndLiveTests(unittest.TestCase):
         self.assertIn(f"badge/version-{top}-", readme)
 
 
+class StartupAndSiteTests(unittest.TestCase):
+    def test_autostart_is_a_logon_task_with_retries(self):
+        cw = (ROOT / "scripts/cw.ps1").read_text(encoding="utf-8")
+        self.assertIn("New-ScheduledTaskTrigger -AtLogOn", cw)
+        self.assertIn("StartupDelayInMSec", cw)
+        start = (ROOT / "scripts/start.ps1").read_text(encoding="utf-8")
+        self.assertIn("for ($attempt", start)
+        self.assertIn("start.log", start)
+        self.assertIn("'autostart' 'on'", (ROOT / "Install.ps1").read_text(encoding="utf-8"))
+
+    def test_pages_render_markdown(self):
+        cfg = (ROOT / "docs/_config.yml").read_text(encoding="utf-8")
+        self.assertIn("jekyll-optional-front-matter", cfg)
+        self.assertIn("jekyll-relative-links", cfg)
+        html = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        self.assertNotIn('.md"', html, "the landing page must link to rendered .html pages")
+
+
 class RepoTests(unittest.TestCase):
     def test_powershell_files_are_ascii(self):
         for p in ROOT.rglob("*.ps1"):

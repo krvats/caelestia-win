@@ -1,0 +1,18 @@
+# GitHub Pages: turns the guides in this folder (*.md) into styled web pages.
+title: caelestia-win
+description: A Caelestia-style desktop for Windows 10 and 11
+theme: jekyll-theme-midnight
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+optional_front_matter:
+  enabled: true
+relative_links:
+  enabled: true
+  collection: false
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collection: false
