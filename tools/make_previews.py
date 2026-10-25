@@ -6,6 +6,7 @@ screenshots whenever you like (see docs/CONTRIBUTING.md).
 
     python tools/make_previews.py
 """
+import math
 import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -199,7 +200,7 @@ def banner(w=1280, h=380):
     out.append(t(w / 2, 232, "A Caelestia-style desktop for Windows 10 & 11", s["on_surface_variant"], 21, 400, "middle"))
     chips = ["komorebi", "whkd", "YASB", "Flow Launcher", "wallpaper colours"]
     widths = [len(c) * 8.4 + 34 for c in chips]
-    total = sum(widths) + 12 * (len(chips) - 1)
+    total = math.fsum(widths) + 12 * (len(chips) - 1)
     x = (w - total) / 2
     for c, cw_ in zip(chips, widths):
         out.append(rect(x, 276, cw_, 34, 17, s["surface_container"], s["outline_variant"], 1, 0.85, 0.7))
