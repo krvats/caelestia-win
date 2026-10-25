@@ -1,0 +1,31 @@
+name: Release
+
+# Push a tag such as v1.2.0 and this builds the download zip and publishes the GitHub release.
+#   git tag v1.2.0
+#   git push origin v1.2.0
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install pillow pyyaml
+      - name: Tests must pass before anything is published
+        run: python -I tests/test_theme.py
+      - name: Build the zip
+        run: git archive --format=zip --prefix=caelestia-win/ -o "caelestia-win-${{ github.ref_name }}.zip" HEAD
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" "caelestia-win-${{ github.ref_name }}.zip" \
+            --title "caelestia-win ${{ github.ref_name }}" --generate-notes

@@ -44,6 +44,9 @@ jobs:
           $r = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error
           $r | Format-Table -AutoSize
           if ($r) { exit 1 }
+      - name: Settings window logic tests (config editing, shortcut editor)
+        shell: powershell
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tests\settings-lib.tests.ps1
       - name: Run cw help and theme generation
         shell: powershell
         run: |
