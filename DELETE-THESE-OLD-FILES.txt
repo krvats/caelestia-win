@@ -1,5 +1,0 @@
-Delete these from your project folder (they moved into the git-ignored 'maintainer' folder):
-Publish.ps1
-tools/set_repo.py
-docs/BEFORE-UPLOAD.md
-docs/GITHUB-SETUP.md
