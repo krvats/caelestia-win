@@ -1,0 +1,276 @@
+# caelestia-win - YASB bar. Colours live in styles.css, which is generated from your wallpaper.
+# Option names below were checked against the YASB wiki widget pages. Icons use single \uXXXX
+# escapes from Nerd Fonts, so install a Nerd Font (the installer adds JetBrainsMono Nerd Font).
+
+watch_stylesheet: true
+watch_config: true
+debug: false
+
+# Used by the YASB tray menu.
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic reload-configuration"
+
+bars:
+  caelestia-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: true
+    blur_effect:
+      enabled: false
+      acrylic: false
+      dark_mode: true
+      round_corners: false
+      border_color: None
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 44
+    padding:
+      top: 6
+      left: 10
+      bottom: 2
+      right: 10
+    widgets:
+      left:
+        - "home"
+        - "komorebi_workspaces"
+        - "komorebi_active_layout"
+        - "taskbar"
+      center:
+        - "clock"
+      right:
+        - "media"
+        - "cpu"
+        - "memory"
+        - "wifi"
+        - "volume"
+        - "battery"
+        - "notifications"
+        - "systray"
+        - "power_menu"
+
+widgets:
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      label: ""
+      system_menu: true
+      power_menu: false
+      blur: true
+
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "Komorebi offline"
+      label_workspace_btn: ""
+      label_workspace_active_btn: ""
+      label_workspace_populated_btn: ""
+      label_default_name: ""
+      label_zero_index: false
+      hide_empty_workspaces: false
+      hide_if_offline: false
+      enable_scroll_switching: true
+      animation: true
+      container_padding:
+        top: 0
+        left: 4
+        bottom: 0
+        right: 4
+
+  komorebi_active_layout:
+    type: "komorebi.active_layout.ActiveLayoutWidget"
+    options:
+      hide_if_offline: true
+      label: "{icon}"
+      layouts:
+        - "bsp"
+        - "columns"
+        - "rows"
+        - "grid"
+        - "vertical_stack"
+        - "horizontal_stack"
+        - "ultrawide_vertical_stack"
+        - "right_main_vertical_stack"
+      layout_icons:
+        bsp: "BSP"
+        columns: "COLS"
+        rows: "ROWS"
+        grid: "GRID"
+        vertical_stack: "V-STACK"
+        horizontal_stack: "H-STACK"
+        ultrawide_vertical_stack: "W-STACK"
+        right_main_vertical_stack: "RMV-STACK"
+        monocle: "MONOCLE"
+        maximised: "MAX"
+        floating: "FLOAT"
+        paused: "PAUSED"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      callbacks:
+        on_left: "next_layout"
+        on_middle: "toggle_monocle"
+        on_right: "prev_layout"
+
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      icon_size: 18
+      tooltip: true
+      show_only_visible: false
+      strict_filtering: true
+      monitor_exclusive: true
+      animation:
+        enabled: true
+        duration: 200
+      title_label:
+        enabled: false
+      ignore_apps:
+        processes: ["yasb.exe", "Flow.Launcher.exe"]
+        titles: []
+        classes: []
+
+  # Not in the bar by default (the taskbar widget replaces it). Add "active_window" to a widgets list to use it.
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "{win[process][name]}"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 16
+      max_length: 44
+      max_length_ellipsis: "..."
+      monitor_exclusive: true
+
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%H:%M}"
+      label_alt: "{%A, %d %B %Y}"
+      timezones: []
+
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title} - {artist}"
+      label_alt: "{title}"
+      max_field_size:
+        label: 28
+        label_alt: 36
+      show_thumbnail: true
+      controls_only: false
+      controls_left: true
+      hide_empty: true
+      thumbnail_alpha: 90
+      thumbnail_padding: 6
+      thumbnail_corner_radius: 10
+      icons:
+        prev_track: ""
+        next_track: ""
+        play: ""
+        pause: ""
+
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "<span></span> {info[percent][total]}%"
+      label_alt: "<span></span> {info[percent][total]}% total"
+      update_interval: 2000
+      callbacks:
+        on_right: "exec cmd /c Taskmgr"
+
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "<span></span> {virtual_mem_percent}%"
+      label_alt: "<span></span> {virtual_mem_free} free"
+      update_interval: 5000
+      callbacks:
+        on_right: "exec cmd /c Taskmgr"
+
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:network"
+
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      volume_icons:
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+      callbacks:
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span> {percent}%"
+      label_alt: "<span>{icon}</span> {percent}% | {time_remaining}"
+      charging_options:
+        icon_format: "{charging_icon}"
+
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span></span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"
+        on_middle: "toggle_label"
+        on_right: "do_nothing"
+
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "▼"
+      label_expanded: "▶"
+      label_position: "left"
+      icon_size: 16
+      pin_click_modifier: "alt"
+      show_unpinned: false
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: ""
+      uptime: true
+      blur: false
+      blur_background: true
+      animation_duration: 250
+      button_row: 3
+      buttons:
+        lock: ["", "Lock"]
+        signout: ["󰍃", "Sign out"]
+        sleep: ["⏾", "Sleep"]
+        shutdown: ["", "Shut down"]
+        restart: ["", "Restart"]
+        hibernate: ["", "Hibernate"]
+        cancel: ["󰜺", "Cancel"]

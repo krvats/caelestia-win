@@ -1,0 +1,243 @@
+/*
+  caelestia-win - YASB stylesheet (GENERATED, do not edit by hand).
+  Edit templates/yasb.styles.css.tmpl instead, then run:  cw theme
+
+  Colours come from the current wallpaper through scripts/theme.py.
+  Only plain Qt-stylesheet properties are used on purpose: no var(), no box-shadow.
+*/
+
+* {
+    font-size: 13px;
+    color: {{on_surface}};
+    font-weight: 500;
+    font-family: "JetBrainsMono NF", "JetBrainsMono Nerd Font", "Segoe UI Variable", "Segoe UI";
+    margin: 0;
+    padding: 0;
+}
+
+/* The bar window itself is invisible; each widget is a floating pill. */
+.yasb-bar {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.container-left,
+.container-center,
+.container-right {
+    margin: 0;
+    padding: 0;
+}
+
+.widget {
+    background-color: rgba({{surface_container_rgb}}, 0.90);
+    border: 1px solid rgba({{outline_variant_rgb}}, 0.55);
+    border-radius: 16px;
+    margin: 0 3px;
+    padding: 0 12px;
+}
+
+.widget .label {
+    padding: 0 2px;
+}
+
+.widget .label.alt {
+    padding: 0 6px;
+}
+
+.widget .icon {
+    color: {{primary}};
+    padding: 0 4px 0 0;
+}
+
+/* ---- start button ---- */
+.home-widget {
+    padding: 0 12px 0 10px;
+}
+.home-widget .icon {
+    color: {{primary}};
+    font-size: 15px;
+}
+.home-widget .icon:hover {
+    color: {{tertiary}};
+}
+
+/* ---- workspaces (komorebi) ---- */
+.komorebi-workspaces {
+    padding: 0 4px;
+}
+.komorebi-workspaces .ws-btn {
+    background-color: transparent;
+    color: {{outline}};
+    border: none;
+    padding: 0 5px;
+    font-size: 13px;
+}
+.komorebi-workspaces .ws-btn:hover {
+    color: {{on_surface}};
+}
+.komorebi-workspaces .ws-btn.populated {
+    color: {{on_surface_variant}};
+}
+.komorebi-workspaces .ws-btn.active {
+    color: {{primary}};
+}
+
+/* ---- layout indicator ---- */
+.komorebi-active-layout .label {
+    color: {{tertiary}};
+    font-weight: 700;
+    font-size: 11px;
+    padding: 0 2px;
+}
+
+/* ---- taskbar (running apps) ---- */
+.taskbar-widget {
+    padding: 0 6px;
+}
+.taskbar-widget .app-container {
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 0 7px;
+    margin: 4px 1px;
+}
+.taskbar-widget .app-container.running {
+    background-color: {{surface_container_high}};
+}
+.taskbar-widget .app-container.foreground {
+    background-color: {{primary_container}};
+}
+.taskbar-widget .app-container.running.minimized {
+    background-color: transparent;
+}
+.taskbar-widget .app-container.flashing {
+    background-color: {{error_container}};
+}
+
+/* ---- active window title ---- */
+.active-window-widget {
+    padding: 0 14px 0 10px;
+}
+.active-window-widget .label {
+    color: {{on_surface_variant}};
+}
+
+/* ---- clock (centre) ---- */
+.clock-widget {
+    background-color: rgba({{primary_container_rgb}}, 0.92);
+    border: 1px solid rgba({{primary_rgb}}, 0.35);
+    padding: 0 16px;
+}
+.clock-widget .label {
+    color: {{on_primary_container}};
+    font-weight: 700;
+}
+
+/* ---- media ---- */
+.media-widget {
+    padding: 0 10px;
+}
+.media-widget .label {
+    color: {{on_surface}};
+}
+.media-widget .btn {
+    color: {{secondary}};
+    padding: 0 4px;
+}
+.media-widget .btn:hover {
+    color: {{primary}};
+}
+
+/* ---- system stats ---- */
+.cpu-widget .icon {
+    color: {{secondary}};
+}
+.memory-widget .icon {
+    color: {{tertiary}};
+}
+
+/* ---- connectivity / audio / battery ---- */
+.wifi-widget .icon,
+.volume-widget .icon,
+.battery-widget .icon {
+    color: {{primary}};
+}
+
+/* ---- notifications ---- */
+.notification-widget .icon {
+    color: {{secondary}};
+}
+.notification-widget .icon.new-notification,
+.notification-widget .label.new-notification {
+    color: {{tertiary}};
+}
+
+/* ---- tray ---- */
+.systray {
+    background: transparent;
+    border: none;
+    margin: 0;
+}
+.systray .unpinned-container {
+    background-color: rgba({{surface_container_high_rgb}}, 0.95);
+    border-radius: 12px;
+}
+.systray .pinned-container {
+    background: transparent;
+}
+.systray .button {
+    border-radius: 8px;
+    padding: 2px 3px;
+}
+.systray .button:hover {
+    background-color: {{surface_container_highest}};
+}
+.systray .unpinned-visibility-btn {
+    border-radius: 8px;
+    color: {{on_surface_variant}};
+}
+.systray .unpinned-visibility-btn:checked {
+    background-color: {{primary_container}};
+}
+
+/* ---- power button + full-screen power menu (the "session" panel) ---- */
+.power-menu-widget {
+    padding: 0 12px;
+}
+.power-menu-widget .label {
+    color: {{error}};
+}
+.power-menu-popup {
+    background-color: rgba({{surface_rgb}}, 0.94);
+    border: 1px solid {{outline_variant}};
+    border-radius: 24px;
+}
+.power-menu-popup .button {
+    background-color: {{surface_container_high}};
+    color: {{on_surface}};
+    border: 1px solid {{outline_variant}};
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin: 6px;
+}
+.power-menu-popup .button:hover {
+    background-color: {{primary_container}};
+    border: 1px solid {{primary}};
+}
+.power-menu-popup .button .label,
+.power-menu-popup .button .icon {
+    color: {{on_surface}};
+    background-color: transparent;
+}
+.power-menu-popup .button:hover .label,
+.power-menu-popup .button:hover .icon {
+    color: {{on_primary_container}};
+}
+.power-menu-popup .button.shutdown .icon,
+.power-menu-popup .button.restart .icon {
+    color: {{error}};
+}
+.power-menu-popup .uptime {
+    color: {{on_surface_variant}};
+    font-size: 14px;
+}

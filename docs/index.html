@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>caelestia-win: tiling desktop for Windows with wallpaper colours</title>
+<meta name="description" content="A Caelestia-style Windows desktop: tiling windows, rounded glowing borders, a floating bar and Material-style colours from your wallpaper. One command to install, free and open source.">
+<link rel="canonical" href="https://krsna0001.github.io/caelestia-win/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="caelestia-win: tiling desktop for Windows">
+<meta property="og:description" content="Tiling, glowing borders, a floating bar and wallpaper colours on Windows 10 and 11.">
+<meta property="og:image" content="https://krsna0001.github.io/caelestia-win/assets/banner.svg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"caelestia-win","applicationCategory":"DesktopEnhancementApplication","operatingSystem":"Windows 10, Windows 11","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://github.com/krsna0001/caelestia-win","description":"Tiling window manager setup, status bar and wallpaper-based colour theming for Windows."}
+</script>
+<style>
+:root{--bg:#141318;--card:#1c1b20;--fg:#e6e1e9;--muted:#b0aab8;--accent:#b8a4f5}
+@media (prefers-color-scheme: light){:root{--bg:#fdf8ff;--card:#f1ecf4;--fg:#1c1b20;--muted:#5d5766;--accent:#6a4fc2}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Segoe UI,sans-serif;background:var(--bg);color:var(--fg)}
+main{max-width:920px;margin:0 auto;padding:32px 20px 64px}
+img{max-width:100%;height:auto;border-radius:14px}
+h1{font-size:2.2rem;margin:.4em 0 .2em}h2{margin-top:2em;color:var(--accent)}
+.btn{display:inline-block;background:var(--accent);color:#141318;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0}
+pre{background:var(--card);padding:14px;border-radius:12px;overflow-x:auto}
+code{font-family:Consolas,monospace}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);padding:16px;border-radius:14px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+<img src="assets/banner.svg" alt="caelestia-win banner">
+<h1>A tiling desktop for Windows that follows your wallpaper</h1>
+<p>caelestia-win turns Windows 10 and 11 into a keyboard-driven tiling desktop with rounded glowing borders, a floating top bar and colours generated from your wallpaper, inspired by the Linux shell Caelestia.</p>
+<a class="btn" href="https://github.com/krsna0001/caelestia-win">View on GitHub</a>
+<a class="btn" href="GETTING-STARTED.md">Beginner guide</a>
+<a class="btn" href="KEYBINDS.md">Shortcuts</a>
+
+<h2>Install in one command</h2>
+<pre><code>git clone https://github.com/krsna0001/caelestia-win
+cd caelestia-win
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1</code></pre>
+
+<h2>What you get</h2>
+<div class="grid">
+<div class="card"><b>Tiling</b><br>Windows arrange themselves. Nine workspaces.</div>
+<div class="card"><b>Glowing borders</b><br>Rounded gradient borders in your theme colours.</div>
+<div class="card"><b>Floating bar</b><br>Workspaces, running apps, clock, battery, volume.</div>
+<div class="card"><b>Wallpaper colours</b><br>Press Alt+W and everything recolours.</div>
+<div class="card"><b>Keyboard first</b><br>Alt+H/J/K/L to move around, Alt+Space to launch.</div>
+<div class="card"><b>Safe</b><br>No admin rights, backups made, one-command uninstall.</div>
+</div>
+
+<h2>Themes</h2>
+<img src="assets/presets.svg" alt="Nine colour presets: lavender, rose, sunset, amber, forest, mint, sky, ocean, orchid">
+
+<h2>Preview</h2>
+<img src="assets/preview-lavender.svg" alt="caelestia-win lavender theme preview">
+</main>
+</body>
+</html>

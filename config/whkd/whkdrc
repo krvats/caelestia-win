@@ -1,0 +1,86 @@
+.shell powershell
+
+# caelestia-win keybinds (Hyprland style).
+# Alt is the main modifier. Windows reserves most Win+key combinations, so Win cannot be used reliably.
+# Launcher: Flow Launcher on Alt+Space (set in Flow Launcher itself).
+#
+# Edit this file, then press Alt+Shift+O to reload.
+
+# ---------------------------------------------------------------- session
+alt + shift + o : komorebic reload-configuration
+alt + shift + e : komorebic stop --whkd
+alt + shift + r : komorebic retile
+ctrl + alt + l : rundll32.exe user32.dll,LockWorkStation
+
+# ---------------------------------------------------------------- apps
+alt + return : wt.exe
+alt + e : explorer.exe
+alt + b : Start-Process "https://www.google.com"
+alt + p : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" screenshot
+
+# ---------------------------------------------------------------- windows
+alt + q : komorebic close
+alt + m : komorebic minimize
+alt + t : komorebic toggle-float
+alt + f : komorebic toggle-maximize
+alt + shift + f : komorebic toggle-monocle
+
+# focus (vim keys)
+alt + h : komorebic focus left
+alt + j : komorebic focus down
+alt + k : komorebic focus up
+alt + l : komorebic focus right
+alt + shift + oem_4 : komorebic cycle-focus previous
+alt + shift + oem_6 : komorebic cycle-focus next
+
+# move
+alt + shift + h : komorebic move left
+alt + shift + j : komorebic move down
+alt + shift + k : komorebic move up
+alt + shift + l : komorebic move right
+alt + shift + return : komorebic promote
+
+# resize
+alt + oem_plus : komorebic resize-axis horizontal increase
+alt + oem_minus : komorebic resize-axis horizontal decrease
+alt + shift + oem_plus : komorebic resize-axis vertical increase
+alt + shift + oem_minus : komorebic resize-axis vertical decrease
+
+# layout
+alt + x : komorebic flip-layout horizontal
+alt + y : komorebic flip-layout vertical
+
+# stacks (tabbed groups)
+alt + left : komorebic stack left
+alt + down : komorebic stack down
+alt + up : komorebic stack up
+alt + right : komorebic stack right
+alt + oem_1 : komorebic unstack
+alt + oem_4 : komorebic cycle-stack previous
+alt + oem_6 : komorebic cycle-stack next
+
+# ---------------------------------------------------------------- workspaces
+alt + 1 : komorebic focus-workspace 0
+alt + 2 : komorebic focus-workspace 1
+alt + 3 : komorebic focus-workspace 2
+alt + 4 : komorebic focus-workspace 3
+alt + 5 : komorebic focus-workspace 4
+alt + 6 : komorebic focus-workspace 5
+alt + 7 : komorebic focus-workspace 6
+alt + 8 : komorebic focus-workspace 7
+alt + 9 : komorebic focus-workspace 8
+
+alt + shift + 1 : komorebic move-to-workspace 0
+alt + shift + 2 : komorebic move-to-workspace 1
+alt + shift + 3 : komorebic move-to-workspace 2
+alt + shift + 4 : komorebic move-to-workspace 3
+alt + shift + 5 : komorebic move-to-workspace 4
+alt + shift + 6 : komorebic move-to-workspace 5
+alt + shift + 7 : komorebic move-to-workspace 6
+alt + shift + 8 : komorebic move-to-workspace 7
+alt + shift + 9 : komorebic move-to-workspace 8
+
+# ---------------------------------------------------------------- wallpaper and colours
+alt + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" wallpaper next
+alt + shift + w : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" wallpaper random
+alt + shift + t : powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\.config\caelestia-win\cw.ps1" scheme toggle

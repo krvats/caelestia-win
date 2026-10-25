@@ -1,0 +1,36 @@
+# caelestia-win - tacky-borders config (GENERATED, do not edit by hand).
+# Edit templates/tacky-borders.config.yaml.tmpl instead, then run:  cw theme
+# Rounded gradient borders in your wallpaper colours, with a soft glow on the focused window.
+
+rendering_backend: V2
+
+global:
+  border_width: 3
+  border_offset: -1
+  border_radius: Auto
+  initialize_delay: 200
+  unminimize_delay: 150
+  active_color:
+    colors: ["{{primary}}", "{{tertiary}}"]
+    direction: 45deg
+  inactive_color:
+    colors: ["{{surface_container_highest}}", "{{outline_variant}}"]
+    direction: 45deg
+  animations:
+    active:
+      - type: ReverseSpiral
+        duration: 1800
+        easing: Linear
+    inactive:
+      - type: Spiral
+        duration: 1800
+        easing: Linear
+    fps: 60
+    enabled: false
+  effects:
+    active:
+      - type: Glow
+        blur: 10.0
+        spread: 0.0
+        opacity: 0.55
+    enabled: true

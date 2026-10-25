@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="Segoe UI, Arial, sans-serif">
+<rect width="900" height="560" rx="22" fill="#141318"/>
+<text x="40" y="58" font-size="30" font-weight="700" fill="#e6e1e9">caelestia-win shortcuts</text>
+<text x="40" y="84" font-size="15" fill="#b0aab8">Alt is the main key. Run  cw keys  in a terminal to print this list.</text>
+<rect x="40" y="112" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="58" y="144" font-size="17" font-weight="700" fill="#b8a4f5">Apps</text>
+<rect x="54" y="157" width="84" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="174" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Enter</text>
+<text x="148" y="174" font-size="13" fill="#b0aab8">Terminal</text>
+<rect x="54" y="187" width="84" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="204" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Space</text>
+<text x="148" y="204" font-size="13" fill="#b0aab8">Launcher</text>
+<rect x="54" y="217" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="234" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt E</text>
+<text x="115" y="234" font-size="13" fill="#b0aab8">Explorer</text>
+<rect x="54" y="247" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="264" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt B</text>
+<text x="115" y="264" font-size="13" fill="#b0aab8">Browser</text>
+<rect x="54" y="277" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="294" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt P</text>
+<text x="115" y="294" font-size="13" fill="#b0aab8">Screenshot</text>
+<rect x="325" y="112" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="343" y="144" font-size="17" font-weight="700" fill="#b8a4f5">Windows</text>
+<rect x="339" y="157" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="174" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Q</text>
+<text x="400" y="174" font-size="13" fill="#b0aab8">Close</text>
+<rect x="339" y="187" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="204" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt T</text>
+<text x="400" y="204" font-size="13" fill="#b0aab8">Float / tile</text>
+<rect x="339" y="217" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="234" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt F</text>
+<text x="400" y="234" font-size="13" fill="#b0aab8">Maximise</text>
+<rect x="339" y="247" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="264" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift F</text>
+<text x="449" y="264" font-size="13" fill="#b0aab8">Monocle</text>
+<rect x="339" y="277" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="294" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt M</text>
+<text x="400" y="294" font-size="13" fill="#b0aab8">Minimise</text>
+<rect x="610" y="112" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="628" y="144" font-size="17" font-weight="700" fill="#b8a4f5">Move around</text>
+<rect x="624" y="157" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="174" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt H J K L</text>
+<text x="734" y="174" font-size="13" fill="#b0aab8">Focus</text>
+<rect x="624" y="187" width="149" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="204" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift H J K L</text>
+<text x="783" y="204" font-size="13" fill="#b0aab8">Move window</text>
+<rect x="624" y="217" width="133" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="234" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift Enter</text>
+<text x="767" y="234" font-size="13" fill="#b0aab8">Make main</text>
+<rect x="624" y="247" width="84" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="264" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt = / -</text>
+<text x="718" y="264" font-size="13" fill="#b0aab8">Resize wider</text>
+<rect x="624" y="277" width="84" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="294" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt X / Y</text>
+<text x="718" y="294" font-size="13" fill="#b0aab8">Flip layout</text>
+<rect x="40" y="332" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="58" y="364" font-size="17" font-weight="700" fill="#b8a4f5">Workspaces</text>
+<rect x="54" y="377" width="76" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="394" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt 1..9</text>
+<text x="140" y="394" font-size="13" fill="#b0aab8">Go to</text>
+<rect x="54" y="407" width="125" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="424" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift 1..9</text>
+<text x="189" y="424" font-size="13" fill="#b0aab8">Send window</text>
+<rect x="54" y="437" width="92" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="454" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Arrows</text>
+<text x="156" y="454" font-size="13" fill="#b0aab8">Stack as tabs</text>
+<rect x="54" y="467" width="67" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="484" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt [ ]</text>
+<text x="131" y="484" font-size="13" fill="#b0aab8">Cycle tabs</text>
+<rect x="54" y="497" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="62" y="514" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt ;</text>
+<text x="115" y="514" font-size="13" fill="#b0aab8">Unstack</text>
+<rect x="325" y="332" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="343" y="364" font-size="17" font-weight="700" fill="#b8a4f5">Look</text>
+<rect x="339" y="377" width="51" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="394" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt W</text>
+<text x="400" y="394" font-size="13" fill="#b0aab8">Next wallpaper</text>
+<rect x="339" y="407" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="424" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift W</text>
+<text x="449" y="424" font-size="13" fill="#b0aab8">Random wallpaper</text>
+<rect x="339" y="437" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="454" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift T</text>
+<text x="449" y="454" font-size="13" fill="#b0aab8">Dark / light</text>
+<rect x="339" y="467" width="133" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="484" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">cw preset ocean</text>
+<text x="482" y="484" font-size="13" fill="#b0aab8">Colour theme</text>
+<rect x="339" y="497" width="67" height="24" rx="7" fill="#2b2833"/>
+<text x="347" y="514" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">cw keys</text>
+<text x="416" y="514" font-size="13" fill="#b0aab8">This list</text>
+<rect x="610" y="332" width="265" height="200" rx="16" fill="#1c1b20" stroke="#35323c"/>
+<text x="628" y="364" font-size="17" font-weight="700" fill="#b8a4f5">Session</text>
+<rect x="624" y="377" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="394" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift O</text>
+<text x="734" y="394" font-size="13" fill="#b0aab8">Reload config</text>
+<rect x="624" y="407" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="424" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift R</text>
+<text x="734" y="424" font-size="13" fill="#b0aab8">Retile</text>
+<rect x="624" y="437" width="100" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="454" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Alt Shift E</text>
+<text x="734" y="454" font-size="13" fill="#b0aab8">Stop tiling</text>
+<rect x="624" y="467" width="92" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="484" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">Ctrl Alt L</text>
+<text x="726" y="484" font-size="13" fill="#b0aab8">Lock</text>
+<rect x="624" y="497" width="84" height="24" rx="7" fill="#2b2833"/>
+<text x="632" y="514" font-size="13" font-family="Consolas, monospace" fill="#e6e1e9">cw doctor</text>
+<text x="718" y="514" font-size="13" fill="#b0aab8">Fix problems</text>
+</svg>

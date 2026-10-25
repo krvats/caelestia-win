@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="caelestia-win concept render, mint light">
+<defs>
+  <linearGradient id="bgd" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffffff"/>
+    <stop offset="0.55" stop-color="#f1fcf9"/>
+    <stop offset="1" stop-color="#80f7dc"/>
+  </linearGradient>
+  <radialGradient id="g1d" cx="0.22" cy="0.25" r="0.55">
+    <stop offset="0" stop-color="#006b5a" stop-opacity="0.38"/><stop offset="1" stop-color="#006b5a" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="g2d" cx="0.82" cy="0.78" r="0.5">
+    <stop offset="0" stop-color="#006782" stop-opacity="0.30"/><stop offset="1" stop-color="#006782" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="bdd" x1="0" y1="1" x2="1" y2="0">
+    <stop offset="0" stop-color="#006b5a"/><stop offset="1" stop-color="#006782"/>
+  </linearGradient>
+  <filter id="glowd" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect width="1280" height="720" fill="url(#bgd)"/>
+<rect width="1280" height="720" fill="url(#g1d)"/>
+<rect width="1280" height="720" fill="url(#g2d)"/>
+<rect x="16" y="14" width="212" height="34" rx="17" fill="#e6f0ed" fill-opacity="0.92" stroke="#b6cbc5" stroke-width="1" stroke-opacity="0.6"/>
+<path d="M38,23 C39.76,29.24 39.76,29.24 46,31 C39.76,32.76 39.76,32.76 38,39 C36.24,32.76 36.24,32.76 30,31 C36.24,29.24 36.24,29.24 38,23Z" fill="#006b5a"/>
+<rect x="62" y="26" width="10" height="10" rx="5" fill="#687b76" fill-opacity="1.0"/>
+<rect x="78" y="26" width="22" height="10" rx="5" fill="#006b5a" fill-opacity="1.0"/>
+<rect x="106" y="26" width="10" height="10" rx="5" fill="#687b76" fill-opacity="1.0"/>
+<rect x="122" y="26" width="10" height="10" rx="5" fill="#b6cbc5" fill-opacity="1.0"/>
+<rect x="138" y="26" width="10" height="10" rx="5" fill="#b6cbc5" fill-opacity="1.0"/>
+<text x="180" y="36" fill="#006782" font-size="11" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0.5">BSP</text>
+<rect x="240" y="14" width="150" height="34" rx="17" fill="#e6f0ed" fill-opacity="0.92" stroke="#b6cbc5" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="248" y="18" width="30" height="26" rx="12" fill="#80f7dc" fill-opacity="1.0"/>
+<rect x="255" y="23" width="16" height="16" rx="5" fill="#006b5a" fill-opacity="1.0"/>
+<rect x="282" y="18" width="30" height="26" rx="12" fill="#e0eae7" fill-opacity="1.0"/>
+<rect x="289" y="23" width="16" height="16" rx="5" fill="#006782" fill-opacity="1.0"/>
+<rect x="323" y="23" width="16" height="16" rx="5" fill="#3f665c" fill-opacity="1.0"/>
+<rect x="357" y="23" width="16" height="16" rx="5" fill="#687b76" fill-opacity="1.0"/>
+<rect x="586.0" y="14" width="108" height="34" rx="17" fill="#80f7dc" fill-opacity="0.95" stroke="#006b5a" stroke-width="1" stroke-opacity="0.35"/>
+<text x="640.0" y="36" fill="#00201a" font-size="14" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<rect x="946" y="14" width="318" height="34" rx="17" fill="#e6f0ed" fill-opacity="0.92" stroke="#b6cbc5" stroke-width="1" stroke-opacity="0.6"/>
+<circle cx="966" cy="31" r="4" fill="#3f665c"/>
+<text x="976" y="35.5" fill="#161d1b" font-size="11.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">CPU 12%</text>
+<circle cx="1048" cy="31" r="4" fill="#006782"/>
+<text x="1058" y="35.5" fill="#161d1b" font-size="11.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">RAM 41%</text>
+<circle cx="1130" cy="31" r="4" fill="#006b5a"/>
+<text x="1140" y="35.5" fill="#161d1b" font-size="11.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">VOL 60</text>
+<circle cx="1242" cy="31" r="6" fill="none" stroke="#ba1a1a" stroke-width="2"/>
+<line x1="1242" y1="24.5" x2="1242" y2="30" stroke="#ba1a1a" stroke-width="2" stroke-linecap="round"/>
+<g>
+<rect x="18" y="70" width="662" height="632" rx="12" fill="none" stroke="url(#bdd)" stroke-width="6" stroke-opacity="0.55" filter="url(#glowd)"/>
+<rect x="18" y="70" width="662" height="632" rx="12" fill="#ebf6f3" fill-opacity="1.0" stroke="url(#bdd)" stroke-width="3" stroke-opacity="1.0"/>
+<rect x="19.5" y="71.5" width="659" height="30" rx="10" fill="#e6f0ed" fill-opacity="1.0"/>
+<circle cx="38" cy="87" r="4.5" fill="#b6cbc5"/>
+<circle cx="54" cy="87" r="4.5" fill="#b6cbc5"/>
+<circle cx="70" cy="87" r="4.5" fill="#b6cbc5"/>
+<text x="349.0" y="91" fill="#394a46" font-size="12" font-weight="500" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Windows Terminal</text>
+<text x="36" y="128" fill="#006497" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">~ </text>
+<text x="51.1" y="128" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">cw preset </text>
+<text x="126.6" y="128" fill="#85468a" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">ocean</text>
+<text x="36" y="150" fill="#394a46" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">scheme from preset ocean</text>
+<text x="36" y="172" fill="#256c2d" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">  wrote </text>
+<text x="96.4" y="172" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">styles.css</text>
+<text x="36" y="194" fill="#006497" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">~ </text>
+<text x="51.1" y="194" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">cw scheme </text>
+<text x="126.6" y="194" fill="#6b5f05" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">toggle</text>
+<text x="36" y="216" fill="#006497" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">~ </text>
+<text x="51.1" y="216" fill="#006b5a" font-size="12.5" font-weight="500" text-anchor="start" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">▌</text>
+</g>
+<g>
+<rect x="698" y="70" width="564" height="298" rx="12" fill="#ebf6f3" fill-opacity="1.0" stroke="#dae5e2" stroke-width="2" stroke-opacity="1.0"/>
+<rect x="699.5" y="71.5" width="561" height="30" rx="10" fill="#e6f0ed" fill-opacity="1.0"/>
+<circle cx="718" cy="87" r="4.5" fill="#b6cbc5"/>
+<circle cx="734" cy="87" r="4.5" fill="#b6cbc5"/>
+<circle cx="750" cy="87" r="4.5" fill="#b6cbc5"/>
+<text x="980.0" y="91" fill="#394a46" font-size="12" font-weight="500" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Browser</text>
+<rect x="714" y="114" width="532" height="28" rx="14" fill="#e0eae7" fill-opacity="1.0"/>
+<text x="732" y="133" fill="#394a46" font-size="12" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">github.com/you/caelestia-win</text>
+<rect x="714.0" y="158" width="169.33333333333334" height="70" rx="12" fill="#80f7dc" fill-opacity="1.0"/>
+<rect x="895.3333333333334" y="158" width="169.33333333333334" height="70" rx="12" fill="#c1ebe0" fill-opacity="1.0"/>
+<rect x="1076.6666666666667" y="158" width="169.33333333333334" height="70" rx="12" fill="#bbe9ff" fill-opacity="1.0"/>
+<rect x="714" y="246" width="478.8" height="8" rx="4" fill="#b6cbc5" fill-opacity="0.8"/>
+<rect x="714" y="268" width="404.32" height="8" rx="4" fill="#b6cbc5" fill-opacity="0.8"/>
+<rect x="714" y="290" width="329.84" height="8" rx="4" fill="#b6cbc5" fill-opacity="0.8"/>
+<rect x="714" y="312" width="255.35999999999999" height="8" rx="4" fill="#b6cbc5" fill-opacity="0.8"/>
+</g>
+<g>
+<rect x="698" y="386" width="564" height="298" rx="12" fill="#ebf6f3" fill-opacity="1.0" stroke="#dae5e2" stroke-width="2" stroke-opacity="1.0"/>
+<rect x="699.5" y="387.5" width="561" height="30" rx="10" fill="#e6f0ed" fill-opacity="1.0"/>
+<circle cx="718" cy="403" r="4.5" fill="#b6cbc5"/>
+<circle cx="734" cy="403" r="4.5" fill="#b6cbc5"/>
+<circle cx="750" cy="403" r="4.5" fill="#b6cbc5"/>
+<text x="980.0" y="407" fill="#394a46" font-size="12" font-weight="500" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Files</text>
+<rect x="712" y="436" width="536" height="32" rx="9" fill="#80f7dc" fill-opacity="0.9"/>
+<rect x="724" y="445" width="14" height="14" rx="4" fill="#006b5a" fill-opacity="1.0"/>
+<text x="748" y="457" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Wallpapers</text>
+<rect x="712" y="476" width="536" height="32" rx="9" fill="#e6f0ed" fill-opacity="0.7"/>
+<rect x="724" y="485" width="14" height="14" rx="4" fill="#006782" fill-opacity="1.0"/>
+<text x="748" y="497" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Projects</text>
+<rect x="712" y="516" width="536" height="32" rx="9" fill="#e6f0ed" fill-opacity="0.7"/>
+<rect x="724" y="525" width="14" height="14" rx="4" fill="#3f665c" fill-opacity="1.0"/>
+<text x="748" y="537" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Downloads</text>
+<rect x="712" y="556" width="536" height="32" rx="9" fill="#e6f0ed" fill-opacity="0.7"/>
+<rect x="724" y="565" width="14" height="14" rx="4" fill="#687b76" fill-opacity="1.0"/>
+<text x="748" y="577" fill="#161d1b" font-size="12.5" font-weight="500" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">Documents</text>
+</g>
+</svg>
