@@ -51,6 +51,7 @@ No git? On the GitHub page click **Code → Download ZIP**, extract it, open the
 
 ```powershell
 cw preset ocean      # pick a colour theme (cw preset list shows all)
+cw preset catppuccin # or a community theme: gruvbox, nord, tokyonight, dracula ...
 cw scheme light      # light mode (cw scheme dark to go back)
 cw keys              # print the shortcut cheat sheet any time
 ```

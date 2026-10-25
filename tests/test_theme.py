@@ -232,6 +232,56 @@ class PresetTests(unittest.TestCase):
             self.assertIn(name, readme, name)
 
 
+class SchemeTests(unittest.TestCase):
+    def test_every_scheme_has_every_role(self):
+        ref = set(theme.build_scheme(200, "dark", "tonal"))
+        for name, variants in theme.SCHEMES.items():
+            for mode in ("dark", "light"):
+                sc, used = theme.build_named_scheme(name, mode)
+                self.assertEqual(set(sc), ref, f"{name} {mode}")
+                self.assertIn(used, variants)
+                for role, value in sc.items():
+                    self.assertRegex(value, HEX, f"{name} {role}")
+
+    def test_scheme_text_is_readable(self):
+        for name in theme.SCHEMES:
+            for mode in ("dark", "light"):
+                sc, _ = theme.build_named_scheme(name, mode)
+                for role in sc:
+                    if role.startswith("on_") and role[3:] in sc:
+                        ratio = theme.contrast(theme.from_hex(sc[role]), theme.from_hex(sc[role[3:]]))
+                        self.assertGreaterEqual(ratio, 4.5, f"{name} {mode} {role}: {ratio:.1f}")
+
+    def test_dark_schemes_are_dark(self):
+        for name in theme.SCHEMES:
+            sc, _ = theme.build_named_scheme(name, "dark")
+            self.assertLess(theme.luminance(theme.from_hex(sc["surface"])), 0.1, name)
+
+    def test_scheme_cli(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            rc = theme.main(["--scheme", "catppuccin", "--mode", "light", "--home", str(Path(tmp) / "h"),
+                             "--no-yasb", "--no-komorebi"])
+            self.assertEqual(rc, 0)
+            data = json.loads((Path(tmp) / "h" / "colors.json").read_text())
+            self.assertEqual(data["source"], "scheme catppuccin")
+            self.assertEqual(data["mode"], "light")
+            self.assertEqual(data["colors"]["surface"], "#eff1f5")
+
+    def test_scheme_without_light_variant_falls_back(self):
+        sc, used = theme.build_named_scheme("dracula", "light")
+        self.assertEqual(used, "dark")
+
+    def test_scheme_names_do_not_clash_with_presets(self):
+        self.assertFalse(set(theme.SCHEMES) & set(theme.PRESETS))
+
+    def test_cw_and_readme_know_every_scheme(self):
+        text = (ROOT / "scripts" / "cw.ps1").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for name in theme.SCHEMES:
+            self.assertIn(f"'{name}'", text, name)
+            self.assertIn(name, readme, name)
+
+
 class RepoTests(unittest.TestCase):
     def test_powershell_files_are_ascii(self):
         for p in ROOT.rglob("*.ps1"):
@@ -248,7 +298,7 @@ class RepoTests(unittest.TestCase):
     def test_svgs_are_valid_xml(self):
         import xml.dom.minidom
         files = list((ROOT / "docs" / "assets").glob("*.svg"))
-        self.assertGreaterEqual(len(files), 6)
+        self.assertGreaterEqual(len(files), 7)
         for f in files:
             xml.dom.minidom.parse(str(f))
 
@@ -260,6 +310,8 @@ class RepoTests(unittest.TestCase):
         self.assertEqual((ROOT / "docs/assets/banner.svg").read_text(encoding="utf-8"), mp.banner() + "\n",
                          "run: python tools/make_previews.py")
         self.assertEqual((ROOT / "docs/assets/presets.svg").read_text(encoding="utf-8"), mp.presets_sheet() + "\n",
+                         "run: python tools/make_previews.py")
+        self.assertEqual((ROOT / "docs/assets/schemes.svg").read_text(encoding="utf-8"), mp.schemes_sheet() + "\n",
                          "run: python tools/make_previews.py")
 
     def test_readme_local_links_exist(self):

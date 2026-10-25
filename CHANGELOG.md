@@ -5,6 +5,7 @@
 - Installer finds tacky-borders in the last releases (and correctly reads the GitHub release list on Windows PowerShell 5.1) and accepts .exe, .zip or .msi files (fixes "latest release has no .exe file")
 - Colour engine no longer prints the Pillow `getdata` deprecation warning
 - New `cw keys` and `cw screenshot` commands, `Alt` `P` screenshot bind
+- Nine community themes (catppuccin, gruvbox, nord, rosepine, tokyonight, dracula, everforest, onedark, solarized), five with a light mode: `cw preset <name>`
 - `Setup.bat` (double-click install) and `Publish.ps1` (one-command GitHub upload with topics and Pages)
 - New docs: beginner guide, shortcut and productivity guide, screenshots guide, GitHub setup guide, GitHub Pages landing page, printable cheat sheet
 

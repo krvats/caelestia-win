@@ -4,6 +4,8 @@
 
 ```powershell
 cw preset ocean        # lavender rose sunset amber forest mint sky ocean orchid
+cw preset catppuccin   # community themes: catppuccin gruvbox nord rosepine tokyonight dracula everforest onedark solarized
+cw preset list         # show every preset and theme
 cw preset auto         # follow the wallpaper again
 cw variant vibrant     # tonal (default) | vibrant | muted | mono
 cw scheme light        # dark | light | toggle

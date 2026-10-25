@@ -143,6 +143,22 @@ cw variant vibrant   # tonal · vibrant · muted · mono
   </tr>
 </table>
 
+### Community themes
+
+Prefer a palette you already know? These fixed colour schemes recolour the bar, the borders and the terminal scheme exactly like the presets above:
+
+```powershell
+cw preset catppuccin   # catppuccin (+ light) · gruvbox (+ light) · rosepine (+ light) · solarized (+ light)
+cw preset nord         # nord · tokyonight · dracula · everforest · onedark
+cw scheme light        # catppuccin latte, gruvbox light, rose pine dawn, solarized light
+```
+
+<p align="center">
+  <img src="docs/assets/schemes.svg" alt="Community themes: catppuccin, gruvbox, nord, rosepine, tokyonight, dracula, everforest, onedark, solarized" width="86%">
+</p>
+
+The colour values are the published palettes of Catppuccin, Gruvbox, Nord, Rosé Pine, Tokyo Night, Dracula, Everforest, One Dark and Solarized; the names belong to their authors. A theme without a light variant keeps its dark look.
+
 Every theme change recolours the bar and the window borders live (the border gradient runs from the primary to the tertiary colour). Windows Terminal gets a matching scheme file you can paste in ([how](docs/CUSTOMIZING.md#windows-terminal)).
 
 <br>

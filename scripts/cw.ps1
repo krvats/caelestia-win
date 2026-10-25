@@ -101,7 +101,9 @@ function Invoke-Theme([string]$Image) {
                  '--komorebi-json', (Join-Path $KomorebiHome 'komorebi.json'),
                  '--mode', $st['mode'], '--variant', $st['variant'])
     if (Get-TackyExe) { $pyArgs += @('--tacky-dir', (Join-Path $HOME '.config\tacky-borders')) }
-    if ($st['preset']) { $pyArgs += @('--preset', $st['preset']) }
+    $schemeNames = @('catppuccin', 'gruvbox', 'nord', 'rosepine', 'tokyonight', 'dracula', 'everforest', 'onedark', 'solarized')
+    if ($st['preset'] -and ($schemeNames -contains $st['preset'])) { $pyArgs += @('--scheme', $st['preset']) }
+    elseif ($st['preset']) { $pyArgs += @('--preset', $st['preset']) }
     elseif ($Image) { $pyArgs += @('--image', $Image) }
 
     & $exe @pyArgs
@@ -266,14 +268,18 @@ function Invoke-Status {
 }
 
 function Invoke-PresetCommand {
-    $presets = @('lavender', 'rose', 'sunset', 'amber', 'forest', 'mint', 'sky', 'ocean', 'orchid')
+    $seedPresets = @('lavender', 'rose', 'sunset', 'amber', 'forest', 'mint', 'sky', 'ocean', 'orchid')
+    $schemePresets = @('catppuccin', 'gruvbox', 'nord', 'rosepine', 'tokyonight', 'dracula', 'everforest', 'onedark', 'solarized')
+    $presets = $seedPresets + $schemePresets
     $name = $Sub.ToLower()
     if (-not $name -or $name -eq 'list') {
         $st = Get-State
         $current = 'auto (follows the wallpaper)'
         if ($st['preset']) { $current = $st['preset'] }
         Write-Output ('current: ' + $current)
-        Write-Output ('presets: ' + ($presets -join ', ') + ', auto')
+        Write-Output ('colour presets:  ' + ($seedPresets -join ', '))
+        Write-Output ('community themes: ' + ($schemePresets -join ', '))
+        Write-Output 'auto = follow the wallpaper'
         return
     }
     $st = Get-State

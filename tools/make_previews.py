@@ -237,6 +237,34 @@ def presets_sheet():
     return "\n".join(out)
 
 
+def schemes_sheet():
+    names = list(theme.SCHEMES)
+    cols, cw_, ch = 3, 400, 168
+    rows = (len(names) + cols - 1) // cols
+    w, h = cols * cw_ + 24, rows * ch + 24
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="community colour themes">',
+           rect(0, 0, w, h, 0, "#0f0e13")]
+    for i, name in enumerate(names):
+        sc, used = theme.build_named_scheme(name, "dark")
+        x, y = 12 + (i % cols) * cw_, 12 + (i // cols) * ch
+        out.append(rect(x, y, cw_ - 12, ch - 12, 18, sc["surface"], sc["outline_variant"], 1))
+        out.append(rect(x + 14, y + 14, cw_ - 40, 34, 17, sc["surface_container"], sc["outline_variant"], 1, 0.9, 0.6))
+        out.append(rect(x + 20, y + 26, 22, 10, 5, sc["primary"]))
+        out.append(rect(x + 48, y + 26, 10, 10, 5, sc["outline"]))
+        out.append(rect(x + 64, y + 26, 10, 10, 5, sc["outline_variant"]))
+        out.append(rect(x + (cw_ - 12) / 2 - 36, y + 18, 72, 26, 13, sc["primary_container"]))
+        out.append(t(x + (cw_ - 12) / 2, y + 36, "09:41", sc["on_primary_container"], 12.5, 700, "middle"))
+        label = name + ("  +light" if "light" in theme.SCHEMES[name] else "")
+        out.append(t(x + 18, y + 78, label, sc["on_surface"], 17, 700))
+        out.append(t(x + cw_ - 38, y + 78, sc["primary"], sc["on_surface_variant"], 12, 500, "end", MONO))
+        sw = [sc["primary"], sc["secondary"], sc["tertiary"], sc["primary_container"], sc["secondary_container"],
+              sc["tertiary_container"], sc["surface_container_high"], sc["outline"]]
+        for j, col in enumerate(sw):
+            out.append(rect(x + 18 + j * 43, y + 98, 38, 38, 11, col))
+    out.append("</svg>")
+    return "\n".join(out)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     files = {
@@ -246,6 +274,7 @@ def main():
         "preview-rose.svg": desktop("rose", "dark", uid="c"),
         "preview-light.svg": desktop("mint", "light", uid="d"),
         "presets.svg": presets_sheet(),
+        "schemes.svg": schemes_sheet(),
     }
     for name, svg in files.items():
         (OUT / name).write_text(svg + "\n", encoding="utf-8")

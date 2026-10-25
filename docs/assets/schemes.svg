@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1224 528" width="1224" height="528" role="img" aria-label="community colour themes">
+<rect x="0" y="0" width="1224" height="528" rx="0" fill="#0f0e13" fill-opacity="1.0"/>
+<rect x="12" y="12" width="388" height="156" rx="18" fill="#1e1e2e" fill-opacity="1.0" stroke="#585b70" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="26" y="26" width="360" height="34" rx="17" fill="#313244" fill-opacity="0.9" stroke="#585b70" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="32" y="38" width="22" height="10" rx="5" fill="#cba6f7" fill-opacity="1.0"/>
+<rect x="60" y="38" width="10" height="10" rx="5" fill="#7f849c" fill-opacity="1.0"/>
+<rect x="76" y="38" width="10" height="10" rx="5" fill="#585b70" fill-opacity="1.0"/>
+<rect x="170.0" y="30" width="72" height="26" rx="13" fill="#52476a" fill-opacity="1.0"/>
+<text x="206.0" y="48" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="30" y="90" fill="#cdd6f4" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">catppuccin  +light</text>
+<text x="374" y="90" fill="#a6adc8" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#cba6f7</text>
+<rect x="30" y="110" width="38" height="38" rx="11" fill="#cba6f7" fill-opacity="1.0"/>
+<rect x="73" y="110" width="38" height="38" rx="11" fill="#89b4fa" fill-opacity="1.0"/>
+<rect x="116" y="110" width="38" height="38" rx="11" fill="#f5c2e7" fill-opacity="1.0"/>
+<rect x="159" y="110" width="38" height="38" rx="11" fill="#52476a" fill-opacity="1.0"/>
+<rect x="202" y="110" width="38" height="38" rx="11" fill="#3e4b6b" fill-opacity="1.0"/>
+<rect x="245" y="110" width="38" height="38" rx="11" fill="#5e4f66" fill-opacity="1.0"/>
+<rect x="288" y="110" width="38" height="38" rx="11" fill="#45475a" fill-opacity="1.0"/>
+<rect x="331" y="110" width="38" height="38" rx="11" fill="#7f849c" fill-opacity="1.0"/>
+<rect x="412" y="12" width="388" height="156" rx="18" fill="#282828" fill-opacity="1.0" stroke="#665c54" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="426" y="26" width="360" height="34" rx="17" fill="#3c3836" fill-opacity="0.9" stroke="#665c54" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="432" y="38" width="22" height="10" rx="5" fill="#fabd2f" fill-opacity="1.0"/>
+<rect x="460" y="38" width="10" height="10" rx="5" fill="#928374" fill-opacity="1.0"/>
+<rect x="476" y="38" width="10" height="10" rx="5" fill="#665c54" fill-opacity="1.0"/>
+<rect x="570.0" y="30" width="72" height="26" rx="13" fill="#67552a" fill-opacity="1.0"/>
+<text x="606.0" y="48" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="430" y="90" fill="#ebdbb2" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">gruvbox  +light</text>
+<text x="774" y="90" fill="#bdae93" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#fabd2f</text>
+<rect x="430" y="110" width="38" height="38" rx="11" fill="#fabd2f" fill-opacity="1.0"/>
+<rect x="473" y="110" width="38" height="38" rx="11" fill="#83a598" fill-opacity="1.0"/>
+<rect x="516" y="110" width="38" height="38" rx="11" fill="#fe8019" fill-opacity="1.0"/>
+<rect x="559" y="110" width="38" height="38" rx="11" fill="#67552a" fill-opacity="1.0"/>
+<rect x="602" y="110" width="38" height="38" rx="11" fill="#434e4a" fill-opacity="1.0"/>
+<rect x="645" y="110" width="38" height="38" rx="11" fill="#684224" fill-opacity="1.0"/>
+<rect x="688" y="110" width="38" height="38" rx="11" fill="#504945" fill-opacity="1.0"/>
+<rect x="731" y="110" width="38" height="38" rx="11" fill="#928374" fill-opacity="1.0"/>
+<rect x="812" y="12" width="388" height="156" rx="18" fill="#2e3440" fill-opacity="1.0" stroke="#4c566a" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="826" y="26" width="360" height="34" rx="17" fill="#3b4252" fill-opacity="0.9" stroke="#4c566a" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="832" y="38" width="22" height="10" rx="5" fill="#88c0d0" fill-opacity="1.0"/>
+<rect x="860" y="38" width="10" height="10" rx="5" fill="#7b88a1" fill-opacity="1.0"/>
+<rect x="876" y="38" width="10" height="10" rx="5" fill="#4c566a" fill-opacity="1.0"/>
+<rect x="970.0" y="30" width="72" height="26" rx="13" fill="#495e6b" fill-opacity="1.0"/>
+<text x="1006.0" y="48" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="830" y="90" fill="#eceff4" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">nord</text>
+<text x="1174" y="90" fill="#d8dee9" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#88c0d0</text>
+<rect x="830" y="110" width="38" height="38" rx="11" fill="#88c0d0" fill-opacity="1.0"/>
+<rect x="873" y="110" width="38" height="38" rx="11" fill="#81a1c1" fill-opacity="1.0"/>
+<rect x="916" y="110" width="38" height="38" rx="11" fill="#b48ead" fill-opacity="1.0"/>
+<rect x="959" y="110" width="38" height="38" rx="11" fill="#495e6b" fill-opacity="1.0"/>
+<rect x="1002" y="110" width="38" height="38" rx="11" fill="#475567" fill-opacity="1.0"/>
+<rect x="1045" y="110" width="38" height="38" rx="11" fill="#564f61" fill-opacity="1.0"/>
+<rect x="1088" y="110" width="38" height="38" rx="11" fill="#434c5e" fill-opacity="1.0"/>
+<rect x="1131" y="110" width="38" height="38" rx="11" fill="#7b88a1" fill-opacity="1.0"/>
+<rect x="12" y="180" width="388" height="156" rx="18" fill="#191724" fill-opacity="1.0" stroke="#403d52" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="26" y="194" width="360" height="34" rx="17" fill="#1f1d2e" fill-opacity="0.9" stroke="#403d52" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="32" y="206" width="22" height="10" rx="5" fill="#c4a7e7" fill-opacity="1.0"/>
+<rect x="60" y="206" width="10" height="10" rx="5" fill="#6e6a86" fill-opacity="1.0"/>
+<rect x="76" y="206" width="10" height="10" rx="5" fill="#403d52" fill-opacity="1.0"/>
+<rect x="170.0" y="198" width="72" height="26" rx="13" fill="#4c425e" fill-opacity="1.0"/>
+<text x="206.0" y="216" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="30" y="258" fill="#e0def4" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">rosepine  +light</text>
+<text x="374" y="258" fill="#908caa" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#c4a7e7</text>
+<rect x="30" y="278" width="38" height="38" rx="11" fill="#c4a7e7" fill-opacity="1.0"/>
+<rect x="73" y="278" width="38" height="38" rx="11" fill="#9ccfd8" fill-opacity="1.0"/>
+<rect x="116" y="278" width="38" height="38" rx="11" fill="#ebbcba" fill-opacity="1.0"/>
+<rect x="159" y="278" width="38" height="38" rx="11" fill="#4c425e" fill-opacity="1.0"/>
+<rect x="202" y="278" width="38" height="38" rx="11" fill="#404e5a" fill-opacity="1.0"/>
+<rect x="245" y="278" width="38" height="38" rx="11" fill="#584851" fill-opacity="1.0"/>
+<rect x="288" y="278" width="38" height="38" rx="11" fill="#26233a" fill-opacity="1.0"/>
+<rect x="331" y="278" width="38" height="38" rx="11" fill="#6e6a86" fill-opacity="1.0"/>
+<rect x="412" y="180" width="388" height="156" rx="18" fill="#1a1b26" fill-opacity="1.0" stroke="#414868" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="426" y="194" width="360" height="34" rx="17" fill="#24283b" fill-opacity="0.9" stroke="#414868" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="432" y="206" width="22" height="10" rx="5" fill="#7aa2f7" fill-opacity="1.0"/>
+<rect x="460" y="206" width="10" height="10" rx="5" fill="#565f89" fill-opacity="1.0"/>
+<rect x="476" y="206" width="10" height="10" rx="5" fill="#414868" fill-opacity="1.0"/>
+<rect x="570.0" y="198" width="72" height="26" rx="13" fill="#374465" fill-opacity="1.0"/>
+<text x="606.0" y="216" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="430" y="258" fill="#c0caf5" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">tokyonight</text>
+<text x="774" y="258" fill="#a9b1d6" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#7aa2f7</text>
+<rect x="430" y="278" width="38" height="38" rx="11" fill="#7aa2f7" fill-opacity="1.0"/>
+<rect x="473" y="278" width="38" height="38" rx="11" fill="#7dcfff" fill-opacity="1.0"/>
+<rect x="516" y="278" width="38" height="38" rx="11" fill="#bb9af7" fill-opacity="1.0"/>
+<rect x="559" y="278" width="38" height="38" rx="11" fill="#374465" fill-opacity="1.0"/>
+<rect x="602" y="278" width="38" height="38" rx="11" fill="#385167" fill-opacity="1.0"/>
+<rect x="645" y="278" width="38" height="38" rx="11" fill="#4a4165" fill-opacity="1.0"/>
+<rect x="688" y="278" width="38" height="38" rx="11" fill="#292e42" fill-opacity="1.0"/>
+<rect x="731" y="278" width="38" height="38" rx="11" fill="#565f89" fill-opacity="1.0"/>
+<rect x="812" y="180" width="388" height="156" rx="18" fill="#282a36" fill-opacity="1.0" stroke="#565a72" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="826" y="194" width="360" height="34" rx="17" fill="#343746" fill-opacity="0.9" stroke="#565a72" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="832" y="206" width="22" height="10" rx="5" fill="#bd93f9" fill-opacity="1.0"/>
+<rect x="860" y="206" width="10" height="10" rx="5" fill="#6272a4" fill-opacity="1.0"/>
+<rect x="876" y="206" width="10" height="10" rx="5" fill="#565a72" fill-opacity="1.0"/>
+<rect x="970.0" y="198" width="72" height="26" rx="13" fill="#554a70" fill-opacity="1.0"/>
+<text x="1006.0" y="216" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="830" y="258" fill="#f8f8f2" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">dracula</text>
+<text x="1174" y="258" fill="#c5c8d6" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#bd93f9</text>
+<rect x="830" y="278" width="38" height="38" rx="11" fill="#bd93f9" fill-opacity="1.0"/>
+<rect x="873" y="278" width="38" height="38" rx="11" fill="#8be9fd" fill-opacity="1.0"/>
+<rect x="916" y="278" width="38" height="38" rx="11" fill="#ff79c6" fill-opacity="1.0"/>
+<rect x="959" y="278" width="38" height="38" rx="11" fill="#554a70" fill-opacity="1.0"/>
+<rect x="1002" y="278" width="38" height="38" rx="11" fill="#466372" fill-opacity="1.0"/>
+<rect x="1045" y="278" width="38" height="38" rx="11" fill="#684261" fill-opacity="1.0"/>
+<rect x="1088" y="278" width="38" height="38" rx="11" fill="#44475a" fill-opacity="1.0"/>
+<rect x="1131" y="278" width="38" height="38" rx="11" fill="#6272a4" fill-opacity="1.0"/>
+<rect x="12" y="348" width="388" height="156" rx="18" fill="#2d353b" fill-opacity="1.0" stroke="#475258" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="26" y="362" width="360" height="34" rx="17" fill="#343f44" fill-opacity="0.9" stroke="#475258" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="32" y="374" width="22" height="10" rx="5" fill="#a7c080" fill-opacity="1.0"/>
+<rect x="60" y="374" width="10" height="10" rx="5" fill="#859289" fill-opacity="1.0"/>
+<rect x="76" y="374" width="10" height="10" rx="5" fill="#475258" fill-opacity="1.0"/>
+<rect x="170.0" y="366" width="72" height="26" rx="13" fill="#525f50" fill-opacity="1.0"/>
+<text x="206.0" y="384" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="30" y="426" fill="#d3c6aa" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">everforest</text>
+<text x="374" y="426" fill="#9da9a0" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#a7c080</text>
+<rect x="30" y="446" width="38" height="38" rx="11" fill="#a7c080" fill-opacity="1.0"/>
+<rect x="73" y="446" width="38" height="38" rx="11" fill="#7fbbb3" fill-opacity="1.0"/>
+<rect x="116" y="446" width="38" height="38" rx="11" fill="#e69875" fill-opacity="1.0"/>
+<rect x="159" y="446" width="38" height="38" rx="11" fill="#525f50" fill-opacity="1.0"/>
+<rect x="202" y="446" width="38" height="38" rx="11" fill="#465d5f" fill-opacity="1.0"/>
+<rect x="245" y="446" width="38" height="38" rx="11" fill="#64534c" fill-opacity="1.0"/>
+<rect x="288" y="446" width="38" height="38" rx="11" fill="#3d484d" fill-opacity="1.0"/>
+<rect x="331" y="446" width="38" height="38" rx="11" fill="#859289" fill-opacity="1.0"/>
+<rect x="412" y="348" width="388" height="156" rx="18" fill="#282c34" fill-opacity="1.0" stroke="#4b5263" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="426" y="362" width="360" height="34" rx="17" fill="#2c313c" fill-opacity="0.9" stroke="#4b5263" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="432" y="374" width="22" height="10" rx="5" fill="#61afef" fill-opacity="1.0"/>
+<rect x="460" y="374" width="10" height="10" rx="5" fill="#5c6370" fill-opacity="1.0"/>
+<rect x="476" y="374" width="10" height="10" rx="5" fill="#4b5263" fill-opacity="1.0"/>
+<rect x="570.0" y="366" width="72" height="26" rx="13" fill="#39536c" fill-opacity="1.0"/>
+<text x="606.0" y="384" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="430" y="426" fill="#abb2bf" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">onedark</text>
+<text x="774" y="426" fill="#9da5b4" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#61afef</text>
+<rect x="430" y="446" width="38" height="38" rx="11" fill="#61afef" fill-opacity="1.0"/>
+<rect x="473" y="446" width="38" height="38" rx="11" fill="#c678dd" fill-opacity="1.0"/>
+<rect x="516" y="446" width="38" height="38" rx="11" fill="#e5c07b" fill-opacity="1.0"/>
+<rect x="559" y="446" width="38" height="38" rx="11" fill="#39536c" fill-opacity="1.0"/>
+<rect x="602" y="446" width="38" height="38" rx="11" fill="#574367" fill-opacity="1.0"/>
+<rect x="645" y="446" width="38" height="38" rx="11" fill="#615849" fill-opacity="1.0"/>
+<rect x="688" y="446" width="38" height="38" rx="11" fill="#3e4451" fill-opacity="1.0"/>
+<rect x="731" y="446" width="38" height="38" rx="11" fill="#5c6370" fill-opacity="1.0"/>
+<rect x="812" y="348" width="388" height="156" rx="18" fill="#002b36" fill-opacity="1.0" stroke="#586e75" stroke-width="1" stroke-opacity="1.0"/>
+<rect x="826" y="362" width="360" height="34" rx="17" fill="#073642" fill-opacity="0.9" stroke="#586e75" stroke-width="1" stroke-opacity="0.6"/>
+<rect x="832" y="374" width="22" height="10" rx="5" fill="#268bd2" fill-opacity="1.0"/>
+<rect x="860" y="374" width="10" height="10" rx="5" fill="#657b83" fill-opacity="1.0"/>
+<rect x="876" y="374" width="10" height="10" rx="5" fill="#586e75" fill-opacity="1.0"/>
+<rect x="970.0" y="366" width="72" height="26" rx="13" fill="#0b4865" fill-opacity="1.0"/>
+<text x="1006.0" y="384" fill="#ffffff" font-size="12.5" font-weight="700" text-anchor="middle" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">09:41</text>
+<text x="830" y="426" fill="#93a1a1" font-size="17" font-weight="700" text-anchor="start" font-family="'Segoe UI Variable','Segoe UI',Inter,'Helvetica Neue',Arial,sans-serif" fill-opacity="1.0" letter-spacing="0">solarized  +light</text>
+<text x="1174" y="426" fill="#839496" font-size="12" font-weight="500" text-anchor="end" font-family="'JetBrains Mono','Cascadia Code',Consolas,'SF Mono',monospace" fill-opacity="1.0" letter-spacing="0">#268bd2</text>
+<rect x="830" y="446" width="38" height="38" rx="11" fill="#268bd2" fill-opacity="1.0"/>
+<rect x="873" y="446" width="38" height="38" rx="11" fill="#2aa198" fill-opacity="1.0"/>
+<rect x="916" y="446" width="38" height="38" rx="11" fill="#b58900" fill-opacity="1.0"/>
+<rect x="959" y="446" width="38" height="38" rx="11" fill="#0b4865" fill-opacity="1.0"/>
+<rect x="1002" y="446" width="38" height="38" rx="11" fill="#0d4e53" fill-opacity="1.0"/>
+<rect x="1045" y="446" width="38" height="38" rx="11" fill="#364726" fill-opacity="1.0"/>
+<rect x="1088" y="446" width="38" height="38" rx="11" fill="#0d4351" fill-opacity="1.0"/>
+<rect x="1131" y="446" width="38" height="38" rx="11" fill="#657b83" fill-opacity="1.0"/>
+</svg>

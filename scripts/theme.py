@@ -155,6 +155,126 @@ PRESETS = {
 }
 
 
+# --------------------------------------------------------------------------
+# Named community colour schemes
+# --------------------------------------------------------------------------
+# Fixed palettes (not generated from a wallpaper). The hex values are the published colours of each well-known
+# palette; the names belong to their authors: Catppuccin, Gruvbox, Nord, Rose Pine, Tokyo Night, Dracula,
+# Everforest, One Dark and Solarized. `cw preset <name>` uses them. A scheme without a light variant keeps
+# its dark look when you ask for light mode.
+# keys: base text subtext overlay s0 s1 s2 (surface steps) primary secondary tertiary error [mantle crust]
+
+SCHEMES = {
+    "catppuccin": {
+        "dark": dict(base="#1e1e2e", mantle="#181825", crust="#11111b", s0="#313244", s1="#45475a", s2="#585b70",
+                     overlay="#7f849c", text="#cdd6f4", subtext="#a6adc8",
+                     primary="#cba6f7", secondary="#89b4fa", tertiary="#f5c2e7", error="#f38ba8"),
+        "light": dict(base="#eff1f5", mantle="#e6e9ef", crust="#dce0e8", s0="#ccd0da", s1="#bcc0cc", s2="#acb0be",
+                      overlay="#8c8fa1", text="#4c4f69", subtext="#6c6f85",
+                      primary="#8839ef", secondary="#1e66f5", tertiary="#ea76cb", error="#d20f39"),
+    },
+    "gruvbox": {
+        "dark": dict(base="#282828", mantle="#1d2021", crust="#171819", s0="#3c3836", s1="#504945", s2="#665c54",
+                     overlay="#928374", text="#ebdbb2", subtext="#bdae93",
+                     primary="#fabd2f", secondary="#83a598", tertiary="#fe8019", error="#fb4934"),
+        "light": dict(base="#fbf1c7", mantle="#f2e5bc", crust="#ebdbb2", s0="#d5c4a1", s1="#bdae93", s2="#a89984",
+                      overlay="#7c6f64", text="#3c3836", subtext="#504945",
+                      primary="#b57614", secondary="#076678", tertiary="#af3a03", error="#9d0006"),
+    },
+    "nord": {
+        "dark": dict(base="#2e3440", s0="#3b4252", s1="#434c5e", s2="#4c566a",
+                     overlay="#7b88a1", text="#eceff4", subtext="#d8dee9",
+                     primary="#88c0d0", secondary="#81a1c1", tertiary="#b48ead", error="#bf616a"),
+    },
+    "rosepine": {
+        "dark": dict(base="#191724", mantle="#16141f", crust="#12101b", s0="#1f1d2e", s1="#26233a", s2="#403d52",
+                     overlay="#6e6a86", text="#e0def4", subtext="#908caa",
+                     primary="#c4a7e7", secondary="#9ccfd8", tertiary="#ebbcba", error="#eb6f92"),
+        "light": dict(base="#faf4ed", mantle="#fffaf3", crust="#f2e9e1", s0="#f2e9e1", s1="#dfdad9", s2="#cecacd",
+                      overlay="#9893a5", text="#575279", subtext="#797593",
+                      primary="#907aa9", secondary="#286983", tertiary="#d7827e", error="#b4637a"),
+    },
+    "tokyonight": {
+        "dark": dict(base="#1a1b26", mantle="#16161e", crust="#13131b", s0="#24283b", s1="#292e42", s2="#414868",
+                     overlay="#565f89", text="#c0caf5", subtext="#a9b1d6",
+                     primary="#7aa2f7", secondary="#7dcfff", tertiary="#bb9af7", error="#f7768e"),
+    },
+    "dracula": {
+        "dark": dict(base="#282a36", mantle="#21222c", crust="#191a21", s0="#343746", s1="#44475a", s2="#565a72",
+                     overlay="#6272a4", text="#f8f8f2", subtext="#c5c8d6",
+                     primary="#bd93f9", secondary="#8be9fd", tertiary="#ff79c6", error="#ff5555"),
+    },
+    "everforest": {
+        "dark": dict(base="#2d353b", mantle="#232a2e", crust="#1e2326", s0="#343f44", s1="#3d484d", s2="#475258",
+                     overlay="#859289", text="#d3c6aa", subtext="#9da9a0",
+                     primary="#a7c080", secondary="#7fbbb3", tertiary="#e69875", error="#e67e80"),
+    },
+    "onedark": {
+        "dark": dict(base="#282c34", mantle="#21252b", crust="#1b1f27", s0="#2c313c", s1="#3e4451", s2="#4b5263",
+                     overlay="#5c6370", text="#abb2bf", subtext="#9da5b4",
+                     primary="#61afef", secondary="#c678dd", tertiary="#e5c07b", error="#e06c75"),
+    },
+    "solarized": {
+        "dark": dict(base="#002b36", mantle="#00252f", crust="#001f27", s0="#073642", s1="#0d4351", s2="#586e75",
+                     overlay="#657b83", text="#93a1a1", subtext="#839496",
+                     primary="#268bd2", secondary="#2aa198", tertiary="#b58900", error="#dc322f"),
+        "light": dict(base="#fdf6e3", mantle="#f7f0dc", crust="#eee8d5", s0="#e6dfc8", s1="#d9d2bc", s2="#93a1a1",
+                      overlay="#839496", text="#586e75", subtext="#657b83",
+                      primary="#268bd2", secondary="#2aa198", tertiary="#b58900", error="#dc322f"),
+    },
+}
+
+
+def blend(a: str, b: str, amount: float) -> str:
+    """Mix colour a towards colour b (amount 0 = a, 1 = b)."""
+    ra, rb = from_hex(a), from_hex(b)
+    return to_hex(tuple(round(x + (y - x) * amount) for x, y in zip(ra, rb)))
+
+
+def build_named_scheme(name: str, mode: str = "dark") -> tuple[dict[str, str], str]:
+    """Return (scheme with the same keys as build_scheme, mode actually used)."""
+    if name not in SCHEMES:
+        raise ValueError(f"scheme must be one of {sorted(SCHEMES)}")
+    variants = SCHEMES[name]
+    used = mode if mode in variants else next(iter(variants))
+    c = variants[used]
+    dark = used == "dark"
+    base, text = c["base"], c["text"]
+    mantle = c.get("mantle") or (blend(base, "#000000", 0.18) if dark else blend(base, text, 0.04))
+    crust = c.get("crust") or (blend(base, "#000000", 0.32) if dark else blend(base, text, 0.08))
+    lowest = crust if dark else blend(base, "#ffffff", 0.6)
+    container = c["s0"] if dark else crust
+    high, highest = (c["s1"], c["s2"]) if dark else (c["s0"], c["s1"])
+
+    def best_on(bg: str, *options: str) -> str:
+        """The option with the highest contrast against bg (keeps text readable on every accent)."""
+        return max(options, key=lambda o: contrast(from_hex(o), from_hex(bg)))
+
+    def container_of(accent: str) -> str:
+        return blend(base, accent, 0.30 if dark else 0.22) if dark else blend(base, accent, 0.28)
+
+    s: dict[str, str] = {}
+    for role, accent in (("primary", c["primary"]), ("secondary", c["secondary"]), ("tertiary", c["tertiary"])):
+        s[role] = accent
+        s["on_" + role] = best_on(accent, base, text, "#ffffff", "#000000")
+        s[role + "_container"] = container_of(accent)
+        s["on_" + role + "_container"] = best_on(s[role + "_container"], text, base, "#ffffff", "#000000")
+    s.update({
+        "background": base, "on_background": text,
+        "surface": base, "surface_dim": crust if dark else crust, "surface_bright": c["s2"] if dark else base,
+        "surface_container_lowest": lowest, "surface_container_low": mantle,
+        "surface_container": container, "surface_container_high": high, "surface_container_highest": highest,
+        "on_surface": text, "on_surface_variant": c["subtext"],
+        "outline": c["overlay"], "outline_variant": c["s2"] if dark else c["s1"],
+        "inverse_surface": text, "inverse_on_surface": base, "inverse_primary": c["secondary"],
+        "error": c["error"], "on_error": best_on(c["error"], base, text, "#ffffff", "#000000"),
+        "error_container": container_of(c["error"]),
+        "on_error_container": best_on(container_of(c["error"]), text, base, "#ffffff", "#000000"),
+        "shadow": "#000000", "scrim": "#000000",
+    })
+    return s, used
+
+
 def hue_of(rgb: tuple[int, int, int]) -> float:
     _, a, b = rgb_to_lab(*rgb)
     return math.degrees(math.atan2(b, a)) % 360
@@ -357,7 +477,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--image", type=Path, help="wallpaper to take the colour from")
     ap.add_argument("--seed", help="hex colour to use instead of reading an image, e.g. #8844cc")
     ap.add_argument("--preset", choices=sorted(PRESETS), help="named seed colour instead of reading an image")
-    ap.add_argument("--list-presets", action="store_true", help="list the preset names and exit")
+    ap.add_argument("--scheme", choices=sorted(SCHEMES), help="fixed community colour scheme (catppuccin, gruvbox, nord, ...)")
+    ap.add_argument("--list-presets", action="store_true", help="list the preset and scheme names and exit")
     ap.add_argument("--mode", choices=("dark", "light"), default="dark")
     ap.add_argument("--variant", choices=sorted(VARIANTS), default="tonal")
     ap.add_argument("--home", type=Path, default=Path.home() / ".config" / "caelestia-win",
@@ -376,6 +497,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.list_presets:
         for name, hex_value in PRESETS.items():
             print(f"{name:10s} {hex_value}")
+        for name, variants in SCHEMES.items():
+            print(f"{name:10s} scheme ({' + '.join(variants)})")
         return 0
 
     # 1. choose the hue
@@ -402,9 +525,19 @@ def main(argv: list[str] | None = None) -> int:
             hue = found[0]
             source = f"image {args.image.name}"
 
-    scheme = build_scheme(hue, args.mode, args.variant)
-    summary = {"source": source, "hue": round(hue, 1), "mode": args.mode,
-               "variant": args.variant, "colors": scheme}
+    mode = args.mode
+    if args.scheme:
+        scheme, mode = build_named_scheme(args.scheme, args.mode)
+        hue = hue_of(from_hex(scheme["primary"]))
+        source = f"scheme {args.scheme}"
+        if mode != args.mode:
+            source += f" (no {args.mode} variant, using {mode})"
+        variant_name = "fixed"
+    else:
+        scheme = build_scheme(hue, mode, args.variant)
+        variant_name = args.variant
+    summary = {"source": source, "hue": round(hue, 1), "mode": mode,
+               "variant": variant_name, "colors": scheme}
     if args.print_only:
         print(json.dumps(summary, indent=2))
         return 0
@@ -417,7 +550,7 @@ def main(argv: list[str] | None = None) -> int:
     term_dir = args.home / "colors"
     term_dir.mkdir(exist_ok=True)
     (term_dir / "terminal-scheme.json").write_text(
-        json.dumps(terminal_scheme(scheme, args.mode), indent=2) + "\n", encoding="utf-8")
+        json.dumps(terminal_scheme(scheme, mode), indent=2) + "\n", encoding="utf-8")
     written.append("colors/terminal-scheme.json")
 
     if not args.no_yasb:
@@ -447,7 +580,7 @@ def main(argv: list[str] | None = None) -> int:
         if patch_komorebi(kpath, scheme, native_border):
             written.append(str(kpath))
 
-    print(f"scheme from {source} (hue {hue:.0f}, {args.mode}, {args.variant})")
+    print(f"scheme from {source} (hue {hue:.0f}, {mode}, {variant_name})")
     for item in written:
         print("  wrote", item)
     return 0
